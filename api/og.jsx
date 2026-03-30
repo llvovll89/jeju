@@ -1,3 +1,4 @@
+/** @jsxImportSource @vercel/og */
 import { ImageResponse } from '@vercel/og';
 
 export const config = { runtime: 'edge' };
@@ -26,7 +27,7 @@ export default async function handler() {
       const fontRes = await fetch(match[1]);
       if (fontRes.ok) fontData = await fontRes.arrayBuffer();
     }
-  } catch (_) {}
+  } catch (_) { }
 
   const fonts = fontData
     ? [{ name: 'NotoKR', data: fontData, weight: 700, style: 'normal' }]
