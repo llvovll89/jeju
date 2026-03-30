@@ -1,0 +1,25 @@
+{
+  "name": "제주도 가족 여행 🍊",
+  "short_name": "제주여행",
+  "description": "26년 4월 부모님 환갑 기념 제주도 가족 여행 일정",
+  "start_url": "./jeju_trip.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c1a2e",
+  "theme_color": "#b45309",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -5,6 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="제주여행" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#b45309" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
   <title>제주도 가족 여행 🍊</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
@@ -1069,6 +1075,74 @@
     .tl-item.done .opts,
     .tl-item.done .map-row  { opacity:.3; pointer-events:none; }
 
+    /* ══ PWA 설치 배너 ══ */
+    .pwa-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 8000;
+      background: #1e293b;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px 20px 0 0;
+      padding: 16px 18px 28px;
+      box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+      transform: translateY(110%);
+      transition: transform 0.4s cubic-bezier(0.34,1.2,0.64,1);
+      color: white;
+    }
+    .pwa-banner.show { transform: translateY(0); }
+
+    .pwa-banner-top {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+    }
+    .pwa-app-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg,#0c3b6e,#b45309);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .pwa-app-info { flex: 1; }
+    .pwa-app-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .pwa-app-desc { font-size: 12px; color: #94a3b8; }
+    .pwa-close {
+      background: rgba(255,255,255,0.1); border: none; color: #94a3b8;
+      width: 28px; height: 28px; border-radius: 999px;
+      font-size: 16px; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* iOS 설치 단계 */
+    .pwa-steps {
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;
+    }
+    .pwa-step {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06); border-radius: 12px; padding: 10px 12px;
+    }
+    .pwa-step-num {
+      width: 24px; height: 24px; border-radius: 999px;
+      background: #b45309; color: white; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .pwa-step-text { font-size: 13px; color: #e2e8f0; line-height: 1.4; }
+    .pwa-step-text b { color: white; }
+
+    /* Android 설치 버튼 */
+    .pwa-install-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 14px; border: none; border-radius: 14px;
+      background: linear-gradient(135deg,#b45309,#d97706);
+      color: white; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+      box-shadow: 0 4px 16px rgba(180,83,9,0.4);
+    }
+    .pwa-install-btn:active { transform: scale(0.97); }
+    .pwa-later {
+      display: block; text-align: center; margin-top: 10px;
+      background: none; border: none; color: #64748b;
+      font-size: 12px; cursor: pointer; width: 100%;
+      font-family: 'Noto Sans KR', sans-serif; padding: 4px;
+    }
+
     /* ── FOOTER ── */
     .footer {
       background: linear-gradient(135deg, #7c2d12, #991b1b, #b45309);
@@ -1097,6 +1171,60 @@
 </head>
 
 <body>
+
+  <!-- ── PWA 설치 배너 ── -->
+  <div class="pwa-banner" id="pwaBanner">
+    <div class="pwa-banner-top">
+      <div class="pwa-app-icon">🍊</div>
+      <div class="pwa-app-info">
+        <div class="pwa-app-name">제주도 가족 여행</div>
+        <div class="pwa-app-desc">홈 화면에 추가하면 앱처럼 사용 가능!</div>
+      </div>
+      <button class="pwa-close" onclick="dismissPwa()">✕</button>
+    </div>
+
+    <!-- iOS용 (JS로 show/hide) -->
+    <div id="pwaIosGuide" style="display:none">
+      <div class="pwa-steps">
+        <div class="pwa-step">
+          <div class="pwa-step-num">1</div>
+          <div class="pwa-step-text">하단 <b>공유 버튼 □↑</b> 을 탭하세요</div>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">2</div>
+          <div class="pwa-step-text">스크롤해서 <b>"홈 화면에 추가"</b> 를 탭하세요</div>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">3</div>
+          <div class="pwa-step-text">우측 상단 <b>"추가"</b> 버튼을 탭하면 완료!</div>
+        </div>
+      </div>
+      <button class="pwa-later" onclick="dismissPwa()">나중에 하기</button>
+    </div>
+
+    <!-- Android / 기타용 (JS로 show/hide) -->
+    <div id="pwaAndroidGuide" style="display:none">
+      <button class="pwa-install-btn" id="pwaInstallBtn" onclick="triggerPwaInstall()">
+        📲 홈 화면에 추가하기
+      </button>
+      <button class="pwa-later" onclick="dismissPwa()">나중에 하기</button>
+    </div>
+
+    <!-- 범용 안내 (beforeinstallprompt 미지원 Android) -->
+    <div id="pwaGenericGuide" style="display:none">
+      <div class="pwa-steps">
+        <div class="pwa-step">
+          <div class="pwa-step-num">1</div>
+          <div class="pwa-step-text">브라우저 <b>메뉴 (⋮)</b> 를 탭하세요</div>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">2</div>
+          <div class="pwa-step-text"><b>"홈 화면에 추가"</b> 또는 <b>"앱 설치"</b> 를 탭하세요</div>
+        </div>
+      </div>
+      <button class="pwa-later" onclick="dismissPwa()">나중에 하기</button>
+    </div>
+  </div>
 
   <!-- ── 오프닝 모달 ── -->
   <div class="modal-overlay" id="modal">
@@ -1835,6 +1963,89 @@
 
 
 <script>
+/* ════ Service Worker 등록 ════ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  });
+}
+
+/* ════ PWA 설치 배너 ════ */
+(function () {
+  var DISMISS_KEY = 'jeju_pwa_dismissed';
+  var deferredPrompt = null;
+
+  /* 7일 이내 닫은 경우 다시 표시 안 함 */
+  function wasDismissed() {
+    try {
+      var t = localStorage.getItem(DISMISS_KEY);
+      if (!t) return false;
+      return (Date.now() - parseInt(t)) < 7 * 24 * 60 * 60 * 1000;
+    } catch(e) { return false; }
+  }
+
+  /* 이미 설치된 경우 (standalone 모드) */
+  function isInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+  }
+
+  function showBanner(type) {
+    if (wasDismissed() || isInstalled()) return;
+    document.getElementById('pwaIosGuide').style.display     = (type === 'ios')     ? 'block' : 'none';
+    document.getElementById('pwaAndroidGuide').style.display = (type === 'android') ? 'block' : 'none';
+    document.getElementById('pwaGenericGuide').style.display = (type === 'generic') ? 'block' : 'none';
+    setTimeout(function () {
+      document.getElementById('pwaBanner').classList.add('show');
+    }, 3000);
+  }
+
+  /* 닫기 */
+  window.dismissPwa = function () {
+    document.getElementById('pwaBanner').classList.remove('show');
+    try { localStorage.setItem(DISMISS_KEY, Date.now().toString()); } catch(e) {}
+  };
+
+  /* Android Chrome/Edge: beforeinstallprompt */
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    showBanner('android');
+  });
+
+  window.triggerPwaInstall = function () {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function (result) {
+      if (result.outcome === 'accepted') dismissPwa();
+      deferredPrompt = null;
+    });
+  };
+
+  /* 설치 완료 시 배너 숨김 */
+  window.addEventListener('appinstalled', function () { dismissPwa(); });
+
+  /* iOS Safari 감지 */
+  var ua = navigator.userAgent;
+  var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  var isIOSSafari = isIOS && /Safari/.test(ua) && !/CriOS|FxiOS|OPiOS/.test(ua);
+
+  /* Android 비-Chrome (Samsung Internet, Firefox 등) */
+  var isAndroid = /Android/.test(ua);
+
+  if (isIOS && !isInstalled()) {
+    /* iOS: beforeinstallprompt 없음 → 항상 안내 표시 */
+    showBanner('ios');
+  } else if (isAndroid && !isInstalled()) {
+    /* Android: beforeinstallprompt가 안 오는 경우 대비 3초 후 generic 표시 */
+    setTimeout(function () {
+      if (!deferredPrompt && !isInstalled() && !wasDismissed()) {
+        showBanner('generic');
+      }
+    }, 3500);
+  }
+})();
+
 /* ════ D-Day 카운터 ════ */
 (function () {
   function updateDday() {
