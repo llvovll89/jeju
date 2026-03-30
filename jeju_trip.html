@@ -637,6 +637,52 @@
       font-weight: 700;
     }
 
+    .flight-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .flight-header-row .flight-label {
+      margin-bottom: 0;
+    }
+
+    .flight-schedule-changed {
+      background: rgba(251, 191, 36, 0.2);
+      border: 1px solid rgba(251, 191, 36, 0.5);
+      color: #fbbf24;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .flight-changed-notice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      border-left: 3px solid rgba(251, 191, 36, 0.5);
+    }
+
+    .flight-changed-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(251, 191, 36, 0.8);
+      white-space: nowrap;
+    }
+
+    .flight-changed-old {
+      font-size: 11px;
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+
     /* ── DAY CARDS ── */
     .days-wrap {
       padding: 12px 12px 40px;
@@ -1300,6 +1346,7 @@
       setTimeout(() => {
         overlay.style.display = 'none';
         document.getElementById('fabBtn').style.display = 'flex';
+        document.body.style.overflow = '';
       }, 290);
     }
 
@@ -1310,6 +1357,7 @@
       box.classList.remove('hiding');
       overlay.style.display = 'flex';
       document.getElementById('fabBtn').style.display = 'none';
+      document.body.style.overflow = 'hidden';
       // 재진입 시 애니메이션 재생
       void box.offsetWidth;
       box.style.animation = 'none';
@@ -1317,6 +1365,9 @@
         box.style.animation = '';
       });
     }
+
+    // 초기 로드 시 모달이 열려있으면 배경 스크롤 차단
+    document.body.style.overflow = 'hidden';
 
     // 배경 클릭 시 닫기
     document.getElementById('modal').addEventListener('click', function (e) {
@@ -1385,7 +1436,10 @@
   <!-- FLIGHT -->
   <div class="flight-wrap">
     <div class="flight-card">
-      <div class="flight-label">✈ 항공편 정보</div>
+      <div class="flight-header-row">
+        <div class="flight-label">✈ 항공편 정보</div>
+        <div class="flight-schedule-changed">⚠ 스케줄 변경됨</div>
+      </div>
       <div class="flight-row">
         <div class="flight-city">
           <div class="city">대구</div>
@@ -1400,6 +1454,10 @@
           <div class="city">제주</div>
           <div class="iata">CJU</div>
         </div>
+      </div>
+      <div class="flight-changed-notice">
+        <span class="flight-changed-label">변경 전</span>
+        <span class="flight-changed-old">TW805 &nbsp; 08:55 → 10:00</span>
       </div>
       <div class="flight-badges">
         <div class="fbadge">항공사 <b>티웨이항공</b></div>
