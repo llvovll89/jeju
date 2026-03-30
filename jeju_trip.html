@@ -14,21 +14,21 @@
   <title>제주도 가족 여행 🍊</title>
 
   <!-- Open Graph / 카카오톡 링크 썸네일 -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:site_name"   content="제주도 가족 여행" />
-  <meta property="og:title"       content="제주도 가족 여행 🍊" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="제주도 가족 여행" />
+  <meta property="og:title" content="제주도 가족 여행 🍊" />
   <meta property="og:description" content="부모님 환갑 기념 · 2026년 4월 3~5일 · 가족 7명의 첫 제주도 여행 ✈️" />
-  <meta property="og:url"         content="https://jejuisland-pi.vercel.app" />
-  <meta property="og:image"       content="https://jejuisland-pi.vercel.app/api/og" />
-  <meta property="og:image:width"  content="1200" />
+  <meta property="og:url" content="https://jejuisland-pi.vercel.app" />
+  <meta property="og:image" content="https://jejuisland-pi.vercel.app/api/og" />
+  <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt"   content="제주도 가족 여행 썸네일" />
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="제주도 가족 여행 🍊" />
+  <meta property="og:image:alt" content="제주도 가족 여행 썸네일" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="제주도 가족 여행 🍊" />
   <meta name="twitter:description" content="부모님 환갑 기념 · 2026년 4월 3~5일 · 가족 7명의 첫 제주도 여행 ✈️" />
-  <meta name="twitter:image"       content="https://jejuisland-pi.vercel.app/api/og" />
+  <meta name="twitter:image" content="https://jejuisland-pi.vercel.app/api/og" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
     :root {
       --dark: #1e293b;
@@ -253,7 +253,7 @@
     .modal-close-btn {
       display: block;
       width: calc(100% - 36px);
-      margin: 0 12px;
+      margin: 6px 12px 12px 12px;
       background: linear-gradient(135deg, #b45309, #d97706);
       color: #fff;
       font-size: 15px;
@@ -264,28 +264,12 @@
       cursor: pointer;
       letter-spacing: 0.5px;
       box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
       flex-shrink: 0;
     }
 
     .modal-close-btn:active {
       transform: scale(0.97);
-    }
-
-    .modal-skip {
-      text-align: center;
-      padding-bottom: 14px;
-      flex-shrink: 0;
-    }
-
-    .modal-skip button {
-      background: none;
-      border: none;
-      font-size: 12px;
-      color: #94a3b8;
-      cursor: pointer;
-      font-family: 'Noto Sans KR', sans-serif;
-      padding: 4px 8px;
     }
 
     /* ── 사진 다시보기 FAB ── */
@@ -301,7 +285,7 @@
       padding: 11px 18px 11px 14px;
       font-size: 13px;
       font-weight: 700;
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(146, 64, 14, 0.5);
       display: flex;
@@ -335,7 +319,7 @@
     }
 
     body {
-      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
       background: #0c1a2e;
       min-height: 100vh;
       font-size: 15px;
@@ -1060,148 +1044,445 @@
     }
 
     /* ══ 날씨 카드 ══ */
-    .extra-wrap { padding: 0 12px 0; background: #0c1a2e; }
-    .weather-card {
-      background: linear-gradient(135deg,#0c3b6e,#1a5296);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px; padding: 16px 18px;
-      color: white; margin-bottom: 12px;
+    .extra-wrap {
+      padding: 0 12px 0;
+      background: #0c1a2e;
     }
-    .weather-title { font-size:11px; font-weight:700; letter-spacing:2px; opacity:.6; text-transform:uppercase; margin-bottom:14px; }
-    .weather-days  { display:flex; gap:8px; }
-    .weather-day   { flex:1; background:rgba(255,255,255,.1); border-radius:14px; padding:12px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .wd-date { font-size:11px; opacity:.65; font-weight:600; }
-    .wd-icon { font-size:28px; line-height:1; }
-    .wd-desc { font-size:10px; opacity:.7; }
-    .wd-temp { font-size:13px; font-weight:700; }
-    .wd-temp .mn { opacity:.6; font-weight:400; }
-    .wd-rain { font-size:11px; color:#93c5fd; }
-    .weather-loading { text-align:center; opacity:.6; font-size:13px; padding:12px 0; }
-    .weather-error  { text-align:center; opacity:.5; font-size:12px; padding:8px 0; }
+
+    .weather-card {
+      background: linear-gradient(135deg, #0c3b6e, #1a5296);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .weather-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: .6;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .weather-days {
+      display: flex;
+      gap: 8px;
+    }
+
+    .weather-day {
+      flex: 1;
+      background: rgba(255, 255, 255, .1);
+      border-radius: 14px;
+      padding: 12px 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .wd-date {
+      font-size: 11px;
+      opacity: .65;
+      font-weight: 600;
+    }
+
+    .wd-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .wd-desc {
+      font-size: 10px;
+      opacity: .7;
+    }
+
+    .wd-temp {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .wd-temp .mn {
+      opacity: .6;
+      font-weight: 400;
+    }
+
+    .wd-rain {
+      font-size: 11px;
+      color: #93c5fd;
+    }
+
+    .weather-loading {
+      text-align: center;
+      opacity: .6;
+      font-size: 13px;
+      padding: 12px 0;
+    }
+
+    .weather-error {
+      text-align: center;
+      opacity: .5;
+      font-size: 12px;
+      padding: 8px 0;
+    }
 
     /* ══ 짐 체크리스트 ══ */
-    .pack-card { background:white; border-radius:18px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.25); margin-bottom:12px; }
+    .pack-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .25);
+      margin-bottom: 12px;
+    }
+
     .pack-header {
-      background: linear-gradient(135deg,#1d4ed8,#3b82f6);
-      padding:14px 18px; display:flex; align-items:center;
-      justify-content:space-between; cursor:pointer;
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
     }
-    .pack-header-left { display:flex; align-items:center; gap:10px; }
-    .pack-header-left h3 { font-size:15px; font-weight:700; color:white; }
-    .pack-progress-text { font-size:12px; color:rgba(255,255,255,.75); }
-    .pack-toggle-icon { color:white; font-size:16px; transition:transform .3s; }
-    .pack-card.open .pack-toggle-icon { transform:rotate(180deg); }
-    .pack-progress-bar-wrap { height:4px; background:rgba(255,255,255,.15); }
-    .pack-progress-bar { height:100%; background:#34d399; transition:width .4s ease; width:0%; }
-    .pack-body { display:none; padding:12px 16px 16px; }
-    .pack-card.open .pack-body { display:block; }
-    .pack-category { margin-bottom:14px; }
-    .pack-cat-title { font-size:12px; font-weight:700; color:#64748b; letter-spacing:.5px; margin-bottom:8px; }
-    .pack-items { display:flex; flex-direction:column; gap:2px; }
+
+    .pack-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pack-header-left h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .pack-progress-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .pack-toggle-icon {
+      color: white;
+      font-size: 16px;
+      transition: transform .3s;
+    }
+
+    .pack-card.open .pack-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .pack-progress-bar-wrap {
+      height: 4px;
+      background: rgba(255, 255, 255, .15);
+    }
+
+    .pack-progress-bar {
+      height: 100%;
+      background: #34d399;
+      transition: width .4s ease;
+      width: 0%;
+    }
+
+    .pack-body {
+      display: none;
+      padding: 12px 16px 16px;
+    }
+
+    .pack-card.open .pack-body {
+      display: block;
+    }
+
+    .pack-category {
+      margin-bottom: 14px;
+    }
+
+    .pack-cat-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+
+    .pack-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
     .pack-item {
-      display:flex; align-items:center; gap:10px;
-      padding:8px 10px; border-radius:10px; cursor:pointer;
-      transition:background .15s; -webkit-tap-highlight-color:transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .15s;
+      -webkit-tap-highlight-color: transparent;
     }
-    .pack-item:active { background:#f1f5f9; }
-    .pack-item.checked { background:#f0fdf4; }
+
+    .pack-item:active {
+      background: #f1f5f9;
+    }
+
+    .pack-item.checked {
+      background: #f0fdf4;
+    }
+
     .pack-check-circle {
-      width:22px; height:22px; border-radius:999px; flex-shrink:0;
-      border:2px solid #cbd5e1; display:flex; align-items:center;
-      justify-content:center; transition:all .2s ease; background:white;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s ease;
+      background: white;
     }
-    .pack-item.checked .pack-check-circle { background:#10b981; border-color:#10b981; }
-    .pack-check-circle::after { content:''; display:none; }
+
+    .pack-item.checked .pack-check-circle {
+      background: #10b981;
+      border-color: #10b981;
+    }
+
+    .pack-check-circle::after {
+      content: '';
+      display: none;
+    }
+
     .pack-item.checked .pack-check-circle::after {
-      content:'✓'; display:block; color:white; font-size:13px; font-weight:700; line-height:1;
+      content: '✓';
+      display: block;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
     }
-    .pack-item-label { font-size:14px; color:#1e293b; transition:all .2s; }
-    .pack-item.checked .pack-item-label { text-decoration:line-through; color:#94a3b8; }
-    .pack-reset { display:block; width:100%; margin-top:8px; background:none; border:1px solid #e2e8f0; border-radius:10px; padding:8px; font-size:12px; color:#94a3b8; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+
+    .pack-item-label {
+      font-size: 14px;
+      color: #1e293b;
+      transition: all .2s;
+    }
+
+    .pack-item.checked .pack-item-label {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
+
+    .pack-reset {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 12px;
+      color: #94a3b8;
+      cursor: pointer;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    }
 
     /* ══ 일정 체크 ══ */
     .tl-check-btn {
-      margin-left:auto; flex-shrink:0; width:28px; height:28px;
-      border-radius:999px; border:2px solid #cbd5e1; background:white;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; font-size:13px; color:transparent;
-      transition:all .2s ease; align-self:flex-start; margin-top:8px;
-      font-family:'Noto Sans KR',sans-serif;
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 2px solid #cbd5e1;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      color: transparent;
+      transition: all .2s ease;
+      align-self: flex-start;
+      margin-top: 8px;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
     }
-    .tl-item.done .tl-check-btn { background:#10b981; border-color:#10b981; color:white; }
-    .tl-item.done .tl-title { text-decoration:line-through; opacity:.45; }
-    .tl-item.done .tl-sub   { opacity:.35; }
-    .tl-item.done .tl-icon  { opacity:.4; filter:grayscale(.6); }
+
+    .tl-item.done .tl-check-btn {
+      background: #10b981;
+      border-color: #10b981;
+      color: white;
+    }
+
+    .tl-item.done .tl-title {
+      text-decoration: line-through;
+      opacity: .45;
+    }
+
+    .tl-item.done .tl-sub {
+      opacity: .35;
+    }
+
+    .tl-item.done .tl-icon {
+      opacity: .4;
+      filter: grayscale(.6);
+    }
+
     .tl-item.done .price-section,
     .tl-item.done .opts,
-    .tl-item.done .map-row  { opacity:.3; pointer-events:none; }
+    .tl-item.done .map-row {
+      opacity: .3;
+      pointer-events: none;
+    }
 
     /* ══ PWA 설치 배너 ══ */
     .pwa-banner {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 8000;
       background: #1e293b;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px 20px 0 0;
       padding: 16px 18px 28px;
-      box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
       transform: translateY(110%);
-      transition: transform 0.4s cubic-bezier(0.34,1.2,0.64,1);
+      transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
       color: white;
     }
-    .pwa-banner.show { transform: translateY(0); }
+
+    .pwa-banner.show {
+      transform: translateY(0);
+    }
 
     .pwa-banner-top {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
+
     .pwa-app-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: linear-gradient(135deg,#0c3b6e,#b45309);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0c3b6e, #b45309);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
     }
-    .pwa-app-info { flex: 1; }
-    .pwa-app-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
-    .pwa-app-desc { font-size: 12px; color: #94a3b8; }
+
+    .pwa-app-info {
+      flex: 1;
+    }
+
+    .pwa-app-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .pwa-app-desc {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
     .pwa-close {
-      background: rgba(255,255,255,0.1); border: none; color: #94a3b8;
-      width: 28px; height: 28px; border-radius: 999px;
-      font-size: 16px; cursor: pointer; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #94a3b8;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* iOS 설치 단계 */
     .pwa-steps {
-      display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
     }
+
     .pwa-step {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.06); border-radius: 12px; padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
     }
+
     .pwa-step-num {
-      width: 24px; height: 24px; border-radius: 999px;
-      background: #b45309; color: white; font-size: 12px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #b45309;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .pwa-step-text { font-size: 13px; color: #e2e8f0; line-height: 1.4; }
-    .pwa-step-text b { color: white; }
+
+    .pwa-step-text {
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    .pwa-step-text b {
+      color: white;
+    }
 
     /* Android 설치 버튼 */
     .pwa-install-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 14px; border: none; border-radius: 14px;
-      background: linear-gradient(135deg,#b45309,#d97706);
-      color: white; font-size: 15px; font-weight: 700;
-      cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
-      box-shadow: 0 4px 16px rgba(180,83,9,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #b45309, #d97706);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      box-shadow: 0 4px 16px rgba(180, 83, 9, 0.4);
     }
-    .pwa-install-btn:active { transform: scale(0.97); }
+
+    .pwa-install-btn:active {
+      transform: scale(0.97);
+    }
+
     .pwa-later {
-      display: block; text-align: center; margin-top: 10px;
-      background: none; border: none; color: #64748b;
-      font-size: 12px; cursor: pointer; width: 100%;
-      font-family: 'Noto Sans KR', sans-serif; padding: 4px;
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 12px;
+      cursor: pointer;
+      width: 100%;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      padding: 4px;
     }
 
     /* ── FOOTER ── */
@@ -1228,10 +1509,121 @@
       margin-top: 10px;
       letter-spacing: 3px;
     }
+
+    /* ── 비 올 때 대안 ── */
+    .rain-alt {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #f0f9ff;
+      border-radius: 10px;
+      border-left: 3px solid #7dd3fc;
+    }
+
+    .rain-alt-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .opt.rain {
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    /* ══ 카카오톡 인앱 브라우저 경고 ══ */
+    .kako-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; animation: fadeIn 0.35s ease;
+    }
+    .kako-card {
+      background: #1e293b; border-radius: 20px; padding: 28px 22px 24px;
+      width: 100%; max-width: 340px; color: white;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      animation: popUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .kako-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, #0c3b6e, #b45309);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; margin: 0 auto 16px;
+    }
+    .kako-title { font-size: 17px; font-weight: 700; text-align: center; margin-bottom: 6px; }
+    .kako-desc  { font-size: 13px; color: #94a3b8; text-align: center; line-height: 1.5; margin-bottom: 20px; }
+    .kako-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .kako-step  {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06); border-radius: 12px; padding: 10px 12px;
+    }
+    .kako-step-num {
+      width: 24px; height: 24px; border-radius: 999px; background: #b45309;
+      color: white; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .kako-step-text { font-size: 13px; color: #e2e8f0; line-height: 1.4; }
+    .kako-step-text b { color: #fcd34d; }
+    .kako-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 14px; border: none; border-radius: 14px;
+      background: linear-gradient(135deg, #b45309, #d97706);
+      color: white; font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      box-shadow: 0 4px 16px rgba(180,83,9,0.4); text-decoration: none;
+    }
+    .kako-btn:active { transform: scale(0.97); }
+    .kako-note { font-size: 11px; color: #64748b; text-align: center; margin-top: 12px; line-height: 1.5; }
   </style>
 </head>
 
 <body>
+
+  <!-- ── 카카오톡 인앱 브라우저 안내 ── -->
+  <div class="kako-overlay" id="kakoOverlay" style="display:none">
+    <div class="kako-card">
+      <div class="kako-icon">🍊</div>
+      <div class="kako-title">외부 브라우저에서 열어주세요</div>
+      <div class="kako-desc">카카오톡 내 브라우저에서는<br>일부 기능이 제한될 수 있어요.</div>
+
+      <!-- iOS 안내 -->
+      <div id="kakoIosGuide" style="display:none">
+        <div class="kako-steps">
+          <div class="kako-step">
+            <div class="kako-step-num">1</div>
+            <div class="kako-step-text">화면 하단의 <b>··· 버튼</b>을 탭하세요</div>
+          </div>
+          <div class="kako-step">
+            <div class="kako-step-num">2</div>
+            <div class="kako-step-text"><b>"Safari에서 열기"</b> 또는 <b>"기본 브라우저로 열기"</b>를 선택하세요</div>
+          </div>
+        </div>
+        <p class="kako-note">Safari에서 열면 홈 화면 추가도 가능해요 ✨</p>
+      </div>
+
+      <!-- Android 안내 -->
+      <div id="kakoAndroidGuide" style="display:none">
+        <a class="kako-btn" id="kakoOpenBtn" href="#">🌐 Chrome으로 열기</a>
+        <div class="kako-steps" style="margin-top:14px">
+          <div class="kako-step">
+            <div class="kako-step-num">1</div>
+            <div class="kako-step-text">위 버튼이 안 되면 우측 상단 <b>⋮ 메뉴</b>를 탭하세요</div>
+          </div>
+          <div class="kako-step">
+            <div class="kako-step-num">2</div>
+            <div class="kako-step-text"><b>"다른 앱으로 열기"</b> 또는 <b>"Chrome으로 열기"</b>를 선택하세요</div>
+          </div>
+        </div>
+        <p class="kako-note">Chrome에서 열면 홈 화면 추가(PWA)도 가능해요 ✨</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ── PWA 설치 배너 ── -->
   <div class="pwa-banner" id="pwaBanner">
@@ -1310,7 +1702,6 @@
           <div class="modal-names">
             <span class="modal-name-tag">👨 아버지</span>
             <span class="modal-name-tag">👩 어머니</span>
-            <span class="modal-name-tag">👶 준후</span>
           </div>
           <div class="modal-message">
             사랑하는 부모님,<br>환갑을 진심으로 축하드려요 🎉
@@ -1325,10 +1716,6 @@
 
       <!-- 버튼 (고정) -->
       <button class="modal-close-btn" onclick="closeModal()">✈️ 여행 일정 보러가기</button>
-      <div class="modal-skip">
-        <button onclick="closeModal()">닫기</button>
-      </div>
-
     </div>
   </div>
 
@@ -1419,7 +1806,8 @@
           <div class="b-val">3곳 무료</div>
           <div class="b-sub">목장 · 박물관 · 지브리샵</div>
         </div>
-        <div class="budget-item" style="background:linear-gradient(135deg,rgba(251,191,36,0.18),rgba(251,191,36,0.08));border:1px solid rgba(251,191,36,0.25);">
+        <div class="budget-item"
+          style="background:linear-gradient(135deg,rgba(251,191,36,0.18),rgba(251,191,36,0.08));border:1px solid rgba(251,191,36,0.25);">
           <div class="b-label">출발까지</div>
           <div class="b-val" id="ddayVal" style="color:#fbbf24;">계산 중</div>
           <div class="b-sub" id="ddaySub">2026.04.03 출발</div>
@@ -1435,9 +1823,10 @@
 
   <!-- FLIGHT -->
   <div class="flight-wrap">
-    <div class="flight-card">
+    <!-- 가는 편 -->
+    <div class="flight-card" style="margin-bottom:12px;">
       <div class="flight-header-row">
-        <div class="flight-label">✈ 항공편 정보</div>
+        <div class="flight-label">✈ 가는 편</div>
         <div class="flight-schedule-changed">⚠ 스케줄 변경됨</div>
       </div>
       <div class="flight-row">
@@ -1467,6 +1856,32 @@
         <div class="fbadge">제주 도착 <b>4월 3일 (금) 09:55</b></div>
       </div>
     </div>
+    <!-- 오는 편 -->
+    <div class="flight-card">
+      <div class="flight-header-row">
+        <div class="flight-label">✈ 오는 편</div>
+      </div>
+      <div class="flight-row">
+        <div class="flight-city">
+          <div class="city">제주</div>
+          <div class="iata">CJU</div>
+        </div>
+        <div class="flight-mid">
+          <div class="flight-times"><span>17:45</span><span>18:55</span></div>
+          <div class="flight-line" style="transform: scaleX(-1);"></div>
+          <div class="flight-dur">1시간 10분</div>
+        </div>
+        <div class="flight-city">
+          <div class="city">대구</div>
+          <div class="iata">TAE</div>
+        </div>
+      </div>
+      <div class="flight-badges">
+        <div class="fbadge">항공사 <b>티웨이항공</b></div>
+        <div class="fbadge">출발 <b>4월 5일 (일) 17:45</b></div>
+        <div class="fbadge">대구 도착 <b>4월 5일 (일) 18:55</b></div>
+      </div>
+    </div>
   </div>
 
   <!-- 날씨 + 짐 체크리스트 -->
@@ -1475,7 +1890,9 @@
     <!-- 날씨 카드 -->
     <div class="weather-card">
       <div class="weather-title">🌤 제주 여행 기간 날씨 예보</div>
-      <div id="weatherContent"><div class="weather-loading">날씨 불러오는 중...</div></div>
+      <div id="weatherContent">
+        <div class="weather-loading">날씨 불러오는 중...</div>
+      </div>
     </div>
 
     <!-- 짐 체크리스트 -->
@@ -1490,66 +1907,116 @@
         </div>
         <span class="pack-toggle-icon" id="packToggleIcon">▼</span>
       </div>
-      <div class="pack-progress-bar-wrap"><div class="pack-progress-bar" id="packProgressBar"></div></div>
+      <div class="pack-progress-bar-wrap">
+        <div class="pack-progress-bar" id="packProgressBar"></div>
+      </div>
       <div class="pack-body" id="packBody">
 
         <div class="pack-category">
           <div class="pack-cat-title">📄 필수 서류</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">신분증 (전원)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">항공권 예약번호 (F34JUH)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">숙소 예약 확인서</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">렌트카 예약 확인서</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">신분증 (전원)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">항공권 예약번호 (F34JUH)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">숙소 예약 확인서</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">렌트카 예약 확인서</span>
+            </div>
           </div>
         </div>
 
         <div class="pack-category">
           <div class="pack-cat-title">🧥 의류</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">겉옷 / 점퍼 (4월 제주 쌀쌀)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">여벌 옷 (2박 분)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">잠옷</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">편한 운동화</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">겉옷 / 점퍼 (4월 제주 쌀쌀)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">여벌 옷 (2박 분)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">잠옷</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">편한 운동화</span>
+            </div>
           </div>
         </div>
 
         <div class="pack-category">
           <div class="pack-cat-title">🧴 세면 / 위생</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">칫솔 · 치약</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">샴푸 · 바디워시</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">선크림 (해수욕장 대비)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">마스크</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">칫솔 · 치약</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">샴푸 · 바디워시</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">선크림 (해수욕장 대비)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">마스크</span>
+            </div>
           </div>
         </div>
 
         <div class="pack-category">
           <div class="pack-cat-title">👶 준후 용품</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">기저귀 (넉넉하게)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">이유식 · 간식</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">아기 옷 여벌</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">물티슈 · 아기 비누</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">체온계 · 아기 약</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">기저귀 (넉넉하게)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">이유식 · 간식</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">아기 옷 여벌</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">물티슈 · 아기 비누</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">체온계 · 아기 약</span>
+            </div>
           </div>
         </div>
 
         <div class="pack-category">
           <div class="pack-cat-title">💊 상비약</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">소화제</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">두통약 · 해열제</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">지사제</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">밴드 · 연고</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">소화제</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">두통약 · 해열제</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">지사제</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">밴드 · 연고</span>
+            </div>
           </div>
         </div>
 
         <div class="pack-category" style="margin-bottom:4px">
           <div class="pack-cat-title">📱 전자기기</div>
           <div class="pack-items">
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">스마트폰 충전기 (전원)</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">보조 배터리</span></div>
-            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">카메라 · 메모리카드</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">스마트폰 충전기 (전원)</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">보조 배터리</span>
+            </div>
+            <div class="pack-item" onclick="togglePackItem(this)">
+              <div class="pack-check-circle"></div><span class="pack-item-label">카메라 · 메모리카드</span>
+            </div>
           </div>
         </div>
 
@@ -1638,6 +2105,13 @@
               </div>
               <div class="price-note">※ 성인 5명 + 어린이 2명 기준 / 아버지 연령에 따라 경로 할인 가능</div>
             </div>
+            <div class="rain-alt">
+              <div class="rain-alt-label">🌧 비 올 때 대안</div>
+              <div class="opts">
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/넥슨컴퓨터박물관+제주" target="_blank">📍 넥슨컴퓨터박물관 — 실내 · 무료</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/제주돌문화공원" target="_blank">📍 제주돌문화공원 — 실내 전시 포함</a></span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1691,6 +2165,13 @@
                 <span class="price-chip pc-total">7명 합계 약 93,000~97,000원</span>
               </div>
               <div class="price-note">※ 네이버 예약 시 10% 할인 / 제주도민 30% 할인</div>
+            </div>
+            <div class="rain-alt">
+              <div class="rain-alt-label">🌧 비 올 때 대안</div>
+              <div class="opts">
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/아쿠아플라넷제주" target="_blank">📍 아쿠아플라넷 제주 — 실내 아쿠아리움 (성산)</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/테지움제주" target="_blank">📍 테지움 제주 — 실내 테디베어 박물관</a></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1774,6 +2255,10 @@
                 <span class="price-chip pc-per">음료·체험 별도</span>
               </div>
               <div class="price-note">※ 화요일 · 명절 휴무 / 10:00~17:00</div>
+            </div>
+            <div class="rain-alt">
+              <div class="rain-alt-label">🌧 비 올 때</div>
+              <div class="tl-sub" style="margin-top:4px; font-size:12px;">목장 패스 후 근처 카페에서 여유 시간 ☕ 다음 일정으로 이동</div>
             </div>
           </div>
         </div>
@@ -1863,6 +2348,13 @@
                 <span class="price-chip pc-free">✅ 무료</span>
               </div>
             </div>
+            <div class="rain-alt">
+              <div class="rain-alt-label">🌧 비 올 때 대안</div>
+              <div class="opts">
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/오설록티뮤지엄" target="_blank">📍 오설록 티뮤지엄 — 실내 · 무료 입장</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/한림공원" target="_blank">📍 한림공원 — 용암동굴 실내 관람</a></span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1885,6 +2377,12 @@
               <a class="map-link" href="https://map.naver.com/v5/search/수목원길야시장" target="_blank">📍 지도</a>
             </div>
             <div class="tl-sub">수목원길 야시장</div>
+            <div class="rain-alt">
+              <div class="rain-alt-label">🌧 비 올 때 대안</div>
+              <div class="opts">
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/동문재래시장+제주" target="_blank">📍 동문재래시장 — 실내 아케이드</a></span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2018,7 +2516,11 @@
               제주 공항 — 귀가
               <a class="map-link" href="https://map.naver.com/v5/search/제주국제공항" target="_blank">📍 지도</a>
             </div>
-            <div class="opts"><span class="opt tbd">귀국 편 확인 필요</span></div>
+            <div class="tl-sub">17:45 출발 → 대구 도착</div>
+            <div class="opts">
+              <span class="opt">티웨이항공</span>
+              <span class="opt">4월 5일 (일) 17:45</span>
+            </div>
           </div>
         </div>
 
@@ -2036,238 +2538,265 @@
   </div>
 
 
-<script>
-/* ════ Service Worker 등록 ════ */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').catch(function () {});
-  });
-}
+  <script>
+    /* ════ Service Worker 등록 ════ */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function () { });
+      });
+    }
 
-/* ════ PWA 설치 배너 ════ */
-(function () {
-  var DISMISS_KEY = 'jeju_pwa_dismissed';
-  var deferredPrompt = null;
+    /* ════ 카카오톡 인앱 브라우저 감지 ════ */
+    (function () {
+      var ua = navigator.userAgent;
+      if (!/KAKAOTALK/i.test(ua)) return;
 
-  /* 7일 이내 닫은 경우 다시 표시 안 함 */
-  function wasDismissed() {
-    try {
-      var t = localStorage.getItem(DISMISS_KEY);
-      if (!t) return false;
-      return (Date.now() - parseInt(t)) < 7 * 24 * 60 * 60 * 1000;
-    } catch(e) { return false; }
-  }
+      window._inKakao = true;
 
-  /* 이미 설치된 경우 (standalone 모드) */
-  function isInstalled() {
-    return window.matchMedia('(display-mode: standalone)').matches
-      || window.navigator.standalone === true;
-  }
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var overlay = document.getElementById('kakoOverlay');
+      overlay.style.display = 'flex';
 
-  function showBanner(type) {
-    if (wasDismissed() || isInstalled()) return;
-    document.getElementById('pwaIosGuide').style.display     = (type === 'ios')     ? 'block' : 'none';
-    document.getElementById('pwaAndroidGuide').style.display = (type === 'android') ? 'block' : 'none';
-    document.getElementById('pwaGenericGuide').style.display = (type === 'generic') ? 'block' : 'none';
-    setTimeout(function () {
-      document.getElementById('pwaBanner').classList.add('show');
-    }, 3000);
-  }
-
-  /* 닫기 */
-  window.dismissPwa = function () {
-    document.getElementById('pwaBanner').classList.remove('show');
-    try { localStorage.setItem(DISMISS_KEY, Date.now().toString()); } catch(e) {}
-  };
-
-  /* Android Chrome/Edge: beforeinstallprompt */
-  window.addEventListener('beforeinstallprompt', function (e) {
-    e.preventDefault();
-    deferredPrompt = e;
-    showBanner('android');
-  });
-
-  window.triggerPwaInstall = function () {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function (result) {
-      if (result.outcome === 'accepted') dismissPwa();
-      deferredPrompt = null;
-    });
-  };
-
-  /* 설치 완료 시 배너 숨김 */
-  window.addEventListener('appinstalled', function () { dismissPwa(); });
-
-  /* iOS Safari 감지 */
-  var ua = navigator.userAgent;
-  var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-  var isIOSSafari = isIOS && /Safari/.test(ua) && !/CriOS|FxiOS|OPiOS/.test(ua);
-
-  /* Android 비-Chrome (Samsung Internet, Firefox 등) */
-  var isAndroid = /Android/.test(ua);
-
-  if (isIOS && !isInstalled()) {
-    /* iOS: beforeinstallprompt 없음 → 항상 안내 표시 */
-    showBanner('ios');
-  } else if (isAndroid && !isInstalled()) {
-    /* Android: beforeinstallprompt가 안 오는 경우 대비 3초 후 generic 표시 */
-    setTimeout(function () {
-      if (!deferredPrompt && !isInstalled() && !wasDismissed()) {
-        showBanner('generic');
-      }
-    }, 3500);
-  }
-})();
-
-/* ════ D-Day 카운터 ════ */
-(function () {
-  function updateDday() {
-    var now    = new Date();
-    var target = new Date('2026-04-03T08:45:00+09:00');
-    var diff   = target - now;
-    var valEl  = document.getElementById('ddayVal');
-    var subEl  = document.getElementById('ddaySub');
-    if (!valEl) return;
-
-    if (diff <= 0) {
-      var elapsed = Math.abs(diff);
-      var days  = Math.floor(elapsed / 86400000);
-      if (days === 0) {
-        valEl.textContent = '✈️ 출발!';
-        subEl.textContent = '오늘이 바로 그 날! 🎉';
-      } else if (days <= 2) {
-        valEl.textContent = '여행 중 🌴';
-        subEl.textContent = days + '일차 즐기는 중!';
+      if (isIOS) {
+        document.getElementById('kakoIosGuide').style.display = 'block';
       } else {
-        valEl.textContent = '여행 완료 🍊';
-        subEl.textContent = '소중한 추억 +' + days + '일';
+        document.getElementById('kakoAndroidGuide').style.display = 'block';
+        var intentUrl =
+          'intent://' + location.href.replace(/^https?:\/\//, '') +
+          '#Intent;scheme=' + (location.protocol === 'https:' ? 'https' : 'http') +
+          ';action=android.intent.action.VIEW' +
+          ';category=android.intent.category.BROWSABLE' +
+          ';package=com.android.chrome' +
+          ';S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end';
+        document.getElementById('kakoOpenBtn').href = intentUrl;
       }
-    } else {
-      var totalSec = Math.floor(diff / 1000);
-      var d = Math.floor(totalSec / 86400);
-      var h = Math.floor((totalSec % 86400) / 3600);
-      var m = Math.floor((totalSec % 3600) / 60);
-      var s = totalSec % 60;
-      if (d > 0) {
-        valEl.textContent = 'D - ' + d;
-        subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
-      } else {
-        valEl.textContent = 'D - 0';
-        subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
+    })();
+
+    /* ════ PWA 설치 배너 ════ */
+    (function () {
+      if (window._inKakao) return;
+      var DISMISS_KEY = 'jeju_pwa_dismissed';
+      var deferredPrompt = null;
+
+      /* 7일 이내 닫은 경우 다시 표시 안 함 */
+      function wasDismissed() {
+        try {
+          var t = localStorage.getItem(DISMISS_KEY);
+          if (!t) return false;
+          return (Date.now() - parseInt(t)) < 7 * 24 * 60 * 60 * 1000;
+        } catch (e) { return false; }
       }
-    }
-  }
-  updateDday();
-  setInterval(updateDday, 1000);
-})();
 
-/* ════ 날씨 카드 (Open-Meteo) ════ */
-(function () {
-  var WMO  = {0:'맑음',1:'구름 조금',2:'구름 많음',3:'흐림',45:'안개',48:'안개',51:'이슬비',53:'이슬비',55:'이슬비',61:'비',63:'비',65:'강한 비',71:'눈',73:'눈',75:'강한 눈',80:'소나기',81:'소나기',82:'강한 소나기',95:'뇌우',99:'뇌우'};
-  var ICON = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈',99:'⛈'};
-  var DATES = ['4/3 (금)','4/4 (토)','4/5 (일)'];
-
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=33.4996&longitude=126.5312&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=2026-04-03&end_date=2026-04-05')
-    .then(function(r){ return r.json(); })
-    .then(function(data) {
-      var d = data.daily, html = '<div class="weather-days">';
-      for (var i = 0; i < 3; i++) {
-        var code = d.weathercode[i];
-        html += '<div class="weather-day">'
-          + '<div class="wd-date">' + DATES[i] + '</div>'
-          + '<div class="wd-icon">'  + (ICON[code] || '🌤') + '</div>'
-          + '<div class="wd-desc">'  + (WMO[code]  || '맑음') + '</div>'
-          + '<div class="wd-temp">'  + Math.round(d.temperature_2m_max[i]) + '° <span class="mn">/ ' + Math.round(d.temperature_2m_min[i]) + '°</span></div>'
-          + '<div class="wd-rain">💧 ' + d.precipitation_probability_max[i] + '%</div>'
-          + '</div>';
+      /* 이미 설치된 경우 (standalone 모드) */
+      function isInstalled() {
+        return window.matchMedia('(display-mode: standalone)').matches
+          || window.navigator.standalone === true;
       }
-      document.getElementById('weatherContent').innerHTML = html + '</div>';
-    })
-    .catch(function() {
-      document.getElementById('weatherContent').innerHTML =
-        '<div class="weather-error">날씨 정보를 불러올 수 없습니다<br>여행 전 날씨앱을 확인해 주세요 🌤</div>';
-    });
-})();
 
-/* ════ 짐 체크리스트 ════ */
-function togglePack() {
-  var card = document.getElementById('packCard');
-  card.classList.toggle('open');
-}
+      function showBanner(type) {
+        if (wasDismissed() || isInstalled()) return;
+        document.getElementById('pwaIosGuide').style.display = (type === 'ios') ? 'block' : 'none';
+        document.getElementById('pwaAndroidGuide').style.display = (type === 'android') ? 'block' : 'none';
+        document.getElementById('pwaGenericGuide').style.display = (type === 'generic') ? 'block' : 'none';
+        setTimeout(function () {
+          document.getElementById('pwaBanner').classList.add('show');
+        }, 3000);
+      }
 
-function togglePackItem(el) {
-  el.classList.toggle('checked');
-  updatePackProgress();
-  savePackState();
-}
+      /* 닫기 */
+      window.dismissPwa = function () {
+        document.getElementById('pwaBanner').classList.remove('show');
+        try { localStorage.setItem(DISMISS_KEY, Date.now().toString()); } catch (e) { }
+      };
 
-function updatePackProgress() {
-  var all     = document.querySelectorAll('.pack-item');
-  var checked = document.querySelectorAll('.pack-item.checked');
-  var pct = all.length ? (checked.length / all.length * 100) : 0;
-  document.getElementById('packProgressBar').style.width = pct + '%';
-  document.getElementById('packProgressBar').style.background = (pct === 100) ? '#f59e0b' : '#34d399';
-  document.getElementById('packProgressText').textContent = checked.length + ' / ' + all.length + ' 완료';
-}
+      /* Android Chrome/Edge: beforeinstallprompt */
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferredPrompt = e;
+        showBanner('android');
+      });
 
-function savePackState() {
-  var state = [];
-  document.querySelectorAll('.pack-item').forEach(function(el) { state.push(el.classList.contains('checked') ? 1 : 0); });
-  try { localStorage.setItem('jeju_pack', JSON.stringify(state)); } catch(e) {}
-}
+      window.triggerPwaInstall = function () {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function (result) {
+          if (result.outcome === 'accepted') dismissPwa();
+          deferredPrompt = null;
+        });
+      };
 
-function resetPack() {
-  if (!confirm('체크리스트를 초기화할까요?')) return;
-  document.querySelectorAll('.pack-item').forEach(function(el) { el.classList.remove('checked'); });
-  updatePackProgress();
-  try { localStorage.removeItem('jeju_pack'); } catch(e) {}
-}
+      /* 설치 완료 시 배너 숨김 */
+      window.addEventListener('appinstalled', function () { dismissPwa(); });
 
-/* 짐 상태 복원 */
-(function() {
-  try {
-    var saved = JSON.parse(localStorage.getItem('jeju_pack') || 'null');
-    if (saved) {
-      var items = document.querySelectorAll('.pack-item');
-      saved.forEach(function(v, i) { if (v && items[i]) items[i].classList.add('checked'); });
+      /* iOS Safari 감지 */
+      var ua = navigator.userAgent;
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isIOSSafari = isIOS && /Safari/.test(ua) && !/CriOS|FxiOS|OPiOS/.test(ua);
+
+      /* Android 비-Chrome (Samsung Internet, Firefox 등) */
+      var isAndroid = /Android/.test(ua);
+
+      if (isIOS && !isInstalled()) {
+        /* iOS: beforeinstallprompt 없음 → 항상 안내 표시 */
+        showBanner('ios');
+      } else if (isAndroid && !isInstalled()) {
+        /* Android: beforeinstallprompt가 안 오는 경우 대비 3초 후 generic 표시 */
+        setTimeout(function () {
+          if (!deferredPrompt && !isInstalled() && !wasDismissed()) {
+            showBanner('generic');
+          }
+        }, 3500);
+      }
+    })();
+
+    /* ════ D-Day 카운터 ════ */
+    (function () {
+      function updateDday() {
+        var now = new Date();
+        var target = new Date('2026-04-03T08:45:00+09:00');
+        var diff = target - now;
+        var valEl = document.getElementById('ddayVal');
+        var subEl = document.getElementById('ddaySub');
+        if (!valEl) return;
+
+        if (diff <= 0) {
+          var elapsed = Math.abs(diff);
+          var days = Math.floor(elapsed / 86400000);
+          if (days === 0) {
+            valEl.textContent = '✈️ 출발!';
+            subEl.textContent = '오늘이 바로 그 날! 🎉';
+          } else if (days <= 2) {
+            valEl.textContent = '여행 중 🌴';
+            subEl.textContent = days + '일차 즐기는 중!';
+          } else {
+            valEl.textContent = '여행 완료 🍊';
+            subEl.textContent = '소중한 추억 +' + days + '일';
+          }
+        } else {
+          var totalSec = Math.floor(diff / 1000);
+          var d = Math.floor(totalSec / 86400);
+          var h = Math.floor((totalSec % 86400) / 3600);
+          var m = Math.floor((totalSec % 3600) / 60);
+          var s = totalSec % 60;
+          if (d > 0) {
+            valEl.textContent = 'D - ' + d;
+            subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
+          } else {
+            valEl.textContent = 'D - 0';
+            subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
+          }
+        }
+      }
+      updateDday();
+      setInterval(updateDday, 1000);
+    })();
+
+    /* ════ 날씨 카드 (Open-Meteo) ════ */
+    (function () {
+      var WMO = { 0: '맑음', 1: '구름 조금', 2: '구름 많음', 3: '흐림', 45: '안개', 48: '안개', 51: '이슬비', 53: '이슬비', 55: '이슬비', 61: '비', 63: '비', 65: '강한 비', 71: '눈', 73: '눈', 75: '강한 눈', 80: '소나기', 81: '소나기', 82: '강한 소나기', 95: '뇌우', 99: '뇌우' };
+      var ICON = { 0: '☀️', 1: '🌤', 2: '⛅', 3: '☁️', 45: '🌫', 48: '🌫', 51: '🌦', 53: '🌦', 55: '🌧', 61: '🌧', 63: '🌧', 65: '🌧', 71: '🌨', 73: '🌨', 75: '❄️', 80: '🌦', 81: '🌧', 82: '⛈', 95: '⛈', 99: '⛈' };
+      var DATES = ['4/3 (금)', '4/4 (토)', '4/5 (일)'];
+
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=33.4996&longitude=126.5312&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=2026-04-03&end_date=2026-04-05')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var d = data.daily, html = '<div class="weather-days">';
+          for (var i = 0; i < 3; i++) {
+            var code = d.weathercode[i];
+            html += '<div class="weather-day">'
+              + '<div class="wd-date">' + DATES[i] + '</div>'
+              + '<div class="wd-icon">' + (ICON[code] || '🌤') + '</div>'
+              + '<div class="wd-desc">' + (WMO[code] || '맑음') + '</div>'
+              + '<div class="wd-temp">' + Math.round(d.temperature_2m_max[i]) + '° <span class="mn">/ ' + Math.round(d.temperature_2m_min[i]) + '°</span></div>'
+              + '<div class="wd-rain">💧 ' + d.precipitation_probability_max[i] + '%</div>'
+              + '</div>';
+          }
+          document.getElementById('weatherContent').innerHTML = html + '</div>';
+        })
+        .catch(function () {
+          document.getElementById('weatherContent').innerHTML =
+            '<div class="weather-error">날씨 정보를 불러올 수 없습니다<br>여행 전 날씨앱을 확인해 주세요 🌤</div>';
+        });
+    })();
+
+    /* ════ 짐 체크리스트 ════ */
+    function togglePack() {
+      var card = document.getElementById('packCard');
+      card.classList.toggle('open');
     }
-  } catch(e) {}
-  updatePackProgress();
-})();
 
-/* ════ 일정 체크리스트 ════ */
-(function() {
-  var items = document.querySelectorAll('.tl-item');
-
-  /* 체크 버튼 삽입 */
-  items.forEach(function(item, idx) {
-    var btn = document.createElement('button');
-    btn.className = 'tl-check-btn';
-    btn.textContent = '✓';
-    item.appendChild(btn);
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      item.classList.toggle('done');
-      saveTlState();
-    });
-  });
-
-  function saveTlState() {
-    var state = [];
-    document.querySelectorAll('.tl-item').forEach(function(el) { state.push(el.classList.contains('done') ? 1 : 0); });
-    try { localStorage.setItem('jeju_tl', JSON.stringify(state)); } catch(e) {}
-  }
-
-  /* 일정 상태 복원 */
-  try {
-    var saved = JSON.parse(localStorage.getItem('jeju_tl') || 'null');
-    if (saved) {
-      items.forEach(function(el, i) { if (saved[i]) el.classList.add('done'); });
+    function togglePackItem(el) {
+      el.classList.toggle('checked');
+      updatePackProgress();
+      savePackState();
     }
-  } catch(e) {}
-})();
-</script>
+
+    function updatePackProgress() {
+      var all = document.querySelectorAll('.pack-item');
+      var checked = document.querySelectorAll('.pack-item.checked');
+      var pct = all.length ? (checked.length / all.length * 100) : 0;
+      document.getElementById('packProgressBar').style.width = pct + '%';
+      document.getElementById('packProgressBar').style.background = (pct === 100) ? '#f59e0b' : '#34d399';
+      document.getElementById('packProgressText').textContent = checked.length + ' / ' + all.length + ' 완료';
+    }
+
+    function savePackState() {
+      var state = [];
+      document.querySelectorAll('.pack-item').forEach(function (el) { state.push(el.classList.contains('checked') ? 1 : 0); });
+      try { localStorage.setItem('jeju_pack', JSON.stringify(state)); } catch (e) { }
+    }
+
+    function resetPack() {
+      if (!confirm('체크리스트를 초기화할까요?')) return;
+      document.querySelectorAll('.pack-item').forEach(function (el) { el.classList.remove('checked'); });
+      updatePackProgress();
+      try { localStorage.removeItem('jeju_pack'); } catch (e) { }
+    }
+
+    /* 짐 상태 복원 */
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('jeju_pack') || 'null');
+        if (saved) {
+          var items = document.querySelectorAll('.pack-item');
+          saved.forEach(function (v, i) { if (v && items[i]) items[i].classList.add('checked'); });
+        }
+      } catch (e) { }
+      updatePackProgress();
+    })();
+
+    /* ════ 일정 체크리스트 ════ */
+    (function () {
+      var items = document.querySelectorAll('.tl-item');
+
+      /* 체크 버튼 삽입 */
+      items.forEach(function (item, idx) {
+        var btn = document.createElement('button');
+        btn.className = 'tl-check-btn';
+        btn.textContent = '✓';
+        item.appendChild(btn);
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          item.classList.toggle('done');
+          saveTlState();
+        });
+      });
+
+      function saveTlState() {
+        var state = [];
+        document.querySelectorAll('.tl-item').forEach(function (el) { state.push(el.classList.contains('done') ? 1 : 0); });
+        try { localStorage.setItem('jeju_tl', JSON.stringify(state)); } catch (e) { }
+      }
+
+      /* 일정 상태 복원 */
+      try {
+        var saved = JSON.parse(localStorage.getItem('jeju_tl') || 'null');
+        if (saved) {
+          items.forEach(function (el, i) { if (saved[i]) el.classList.add('done'); });
+        }
+      } catch (e) { }
+    })();
+  </script>
 
 </body>
 
