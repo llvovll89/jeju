@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>제주도 가족 여행 🍊</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+    :root {
+      --dark: #1e293b;
+      --gray: #64748b;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: fadeIn 0.4s ease;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.hiding {
+      animation: fadeOut 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 360px;
+      /* 화면 높이를 초과하지 않도록 */
+      max-height: calc(100dvh - 32px);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+      animation: popUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .modal-box.hiding {
+      animation: popDown 0.28s ease forwards;
+    }
+
+    @keyframes popUp {
+      from {
+        transform: scale(0.8) translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes popDown {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(0.88) translateY(16px);
+        opacity: 0;
+      }
+    }
+
+    /* 상단 골드 배너 */
+    .modal-top-banner {
+      background: linear-gradient(135deg, #92400e, #b45309, #d97706);
+      padding: 12px 20px 10px;
+      text-align: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .modal-top-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: white;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .modal-banner-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fef3c7;
+      letter-spacing: 0.8px;
+      margin-bottom: 2px;
+    }
+
+    .modal-banner-emoji {
+      font-size: 18px;
+      letter-spacing: 3px;
+      display: block;
+    }
+
+    /* 스크롤 영역 */
+    .modal-scroll {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* 사진 */
+    .modal-photo-wrap {
+      position: relative;
+      padding: 18px 18px 0;
+      flex-shrink: 0;
+    }
+
+    .modal-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-badge {
+      position: absolute;
+      top: 28px;
+      right: 26px;
+      background: linear-gradient(135deg, #991b1b, #b45309);
+      color: #fef3c7;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(153, 27, 27, 0.45);
+      letter-spacing: 0.5px;
+    }
+
+    /* 하단 텍스트 */
+    .modal-body {
+      padding: 16px 20px 6px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .modal-names {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .modal-name-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400e;
+      background: #fef3c7;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .modal-message {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .modal-divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px;
+    }
+
+    .modal-divider::before,
+    .modal-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .modal-divider span {
+      font-size: 15px;
+      letter-spacing: 3px;
+    }
+
+    .modal-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    /* 닫기 버튼 */
+    .modal-close-btn {
+      display: block;
+      width: calc(100% - 36px);
+      margin: 0 12px;
+      background: linear-gradient(135deg, #b45309, #d97706);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px;
+      border: none;
+      border-radius: 13px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);
+      font-family: 'Noto Sans KR', sans-serif;
+      flex-shrink: 0;
+    }
+
+    .modal-close-btn:active {
+      transform: scale(0.97);
+    }
+
+    .modal-skip {
+      text-align: center;
+      padding-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    .modal-skip button {
+      background: none;
+      border: none;
+      font-size: 12px;
+      color: #94a3b8;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 4px 8px;
+    }
+
+    /* ── 사진 다시보기 FAB ── */
+    .fab-photo {
+      position: fixed;
+      bottom: 24px;
+      right: 18px;
+      z-index: 1000;
+      background: linear-gradient(135deg, #92400e, #d97706);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 11px 18px 11px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(146, 64, 14, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      animation: fabIn 0.5s 0.8s both;
+    }
+
+    .fab-photo:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes fabIn {
+      from {
+        opacity: 0;
+        transform: scale(0.7) translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: #0c1a2e;
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── 환갑 배너 ── */
+    .hwan-banner {
+      background: linear-gradient(135deg, #7c2d12 0%, #991b1b 40%, #b45309 100%);
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hwan-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hwan-emoji-row {
+      font-size: 26px;
+      margin-bottom: 8px;
+      letter-spacing: 4px;
+    }
+
+    .hwan-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: #fef3c7;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .hwan-sub {
+      font-size: 13px;
+      color: rgba(254, 243, 199, 0.75);
+      font-weight: 400;
+    }
+
+    .hwan-parents {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hwan-parent-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(254, 243, 199, 0.4);
+      color: #fef3c7;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(180deg, #0f3460 0%, #16213e 100%);
+      padding: 28px 16px 24px;
+      text-align: center;
+    }
+
+    .hero-plane {
+      font-size: 44px;
+      display: block;
+      margin-bottom: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero .dates {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 16px;
+    }
+
+    .family-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: center;
+    }
+
+    .family-chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* ── BUDGET SUMMARY ── */
+    .budget-wrap {
+      background: linear-gradient(180deg, #16213e 0%, #0c1a2e 100%);
+      padding: 0 12px 16px;
+    }
+
+    .budget-card {
+      background: linear-gradient(135deg, #1e3a5f, #1a3050);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: white;
+    }
+
+    .budget-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .budget-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .budget-item {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .budget-item .b-label {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-bottom: 2px;
+    }
+
+    .budget-item .b-val {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .budget-item .b-sub {
+      font-size: 11px;
+      opacity: 0.55;
+      margin-top: 1px;
+    }
+
+    .budget-total {
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .budget-total .bt-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fde68a;
+    }
+
+    .budget-total .bt-val {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fbbf24;
+    }
+
+    .budget-note {
+      font-size: 11px;
+      opacity: 0.45;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── FLIGHT ── */
+    .flight-wrap {
+      padding: 0 12px 16px;
+      background: linear-gradient(180deg, #16213e 0%, #0c1a2e 100%);
+    }
+
+    .flight-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: white;
+    }
+
+    .flight-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .flight-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flight-city {
+      text-align: center;
+      min-width: 52px;
+    }
+
+    .flight-city .city {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .flight-city .iata {
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .flight-mid {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .flight-times {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .flight-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.35);
+      position: relative;
+    }
+
+    .flight-line::after {
+      content: '✈';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+    }
+
+    .flight-dur {
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .flight-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .fbadge {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    .fbadge b {
+      font-weight: 700;
+    }
+
+    /* ── DAY CARDS ── */
+    .days-wrap {
+      padding: 12px 12px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .day-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .day-header {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .day-header.d1 {
+      background: linear-gradient(135deg, #047857, #10b981);
+    }
+
+    .day-header.d2 {
+      background: linear-gradient(135deg, #b45309, #f59e0b);
+    }
+
+    .day-header.d3 {
+      background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+    }
+
+    .day-num {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .day-num .n {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .day-num .lbl {
+      font-size: 10px;
+      opacity: 0.8;
+    }
+
+    .day-info {
+      color: #fff;
+    }
+
+    .day-info h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .day-info .ddate {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 1px;
+    }
+
+    /* day cost badge */
+    .day-cost {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* timeline */
+    .tl {
+      padding: 16px 16px 8px;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .tl-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 42px;
+      width: 2px;
+      height: calc(100% - 10px);
+      background: #e2e8f0;
+    }
+
+    .tl-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ic-plane {
+      background: #eff6ff;
+    }
+
+    .ic-car {
+      background: #fdf4ff;
+    }
+
+    .ic-food {
+      background: #fff7ed;
+    }
+
+    .ic-nature {
+      background: #f0fdf4;
+    }
+
+    .ic-shop {
+      background: #fefce8;
+    }
+
+    .ic-hotel {
+      background: #f5f3ff;
+    }
+
+    .ic-museum {
+      background: #faf5ff;
+    }
+
+    .ic-cafe {
+      background: #fdf2f8;
+    }
+
+    .ic-beach {
+      background: #ecfeff;
+    }
+
+    .ic-market {
+      background: #f0fdf4;
+    }
+
+    .ic-morn {
+      background: #fff7ed;
+    }
+
+    .ic-cow {
+      background: #f0fdf4;
+    }
+
+    .tl-body {
+      flex: 1;
+      padding-top: 8px;
+    }
+
+    .tl-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #059669;
+      background: #d1fae5;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      min-height: 26px;
+    }
+
+    .map-link:active {
+      background: #a7f3d0;
+    }
+
+    .tl-sub {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 3px;
+      line-height: 1.55;
+    }
+
+    /* ── 가격 영역 ── */
+    .price-section {
+      margin-top: 8px;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border-left: 3px solid #e2e8f0;
+    }
+
+    .price-section.free-section {
+      border-left-color: #10b981;
+      background: #f0fdf4;
+    }
+
+    .price-section.food-section {
+      border-left-color: #f97316;
+      background: #fff7ed;
+    }
+
+    .price-section.paid-section {
+      border-left-color: #8b5cf6;
+      background: #faf5ff;
+    }
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .price-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .pc-adult {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .pc-senior {
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    .pc-child {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+
+    .pc-free {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .pc-total {
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 700;
+    }
+
+    .pc-per {
+      background: #fff7ed;
+      color: #c2410c;
+    }
+
+    .price-divider {
+      width: 100%;
+      height: 1px;
+      background: #e2e8f0;
+      margin: 6px 0;
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .price-label {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* option pills */
+    .opts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .opt {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 28px;
+    }
+
+    .opt.food {
+      background: #fff7ed;
+      color: #c2410c;
+    }
+
+    .opt.info {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .opt.tbd {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px dashed #cbd5e1;
+    }
+
+    .opt a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .map-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #065f46;
+      background: #d1fae5;
+      padding: 5px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      min-height: 32px;
+    }
+
+    .map-btn:active {
+      background: #a7f3d0;
+    }
+
+    /* ══ 날씨 카드 ══ */
+    .extra-wrap { padding: 0 12px 0; background: #0c1a2e; }
+    .weather-card {
+      background: linear-gradient(135deg,#0c3b6e,#1a5296);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px; padding: 16px 18px;
+      color: white; margin-bottom: 12px;
+    }
+    .weather-title { font-size:11px; font-weight:700; letter-spacing:2px; opacity:.6; text-transform:uppercase; margin-bottom:14px; }
+    .weather-days  { display:flex; gap:8px; }
+    .weather-day   { flex:1; background:rgba(255,255,255,.1); border-radius:14px; padding:12px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:4px; }
+    .wd-date { font-size:11px; opacity:.65; font-weight:600; }
+    .wd-icon { font-size:28px; line-height:1; }
+    .wd-desc { font-size:10px; opacity:.7; }
+    .wd-temp { font-size:13px; font-weight:700; }
+    .wd-temp .mn { opacity:.6; font-weight:400; }
+    .wd-rain { font-size:11px; color:#93c5fd; }
+    .weather-loading { text-align:center; opacity:.6; font-size:13px; padding:12px 0; }
+    .weather-error  { text-align:center; opacity:.5; font-size:12px; padding:8px 0; }
+
+    /* ══ 짐 체크리스트 ══ */
+    .pack-card { background:white; border-radius:18px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.25); margin-bottom:12px; }
+    .pack-header {
+      background: linear-gradient(135deg,#1d4ed8,#3b82f6);
+      padding:14px 18px; display:flex; align-items:center;
+      justify-content:space-between; cursor:pointer;
+    }
+    .pack-header-left { display:flex; align-items:center; gap:10px; }
+    .pack-header-left h3 { font-size:15px; font-weight:700; color:white; }
+    .pack-progress-text { font-size:12px; color:rgba(255,255,255,.75); }
+    .pack-toggle-icon { color:white; font-size:16px; transition:transform .3s; }
+    .pack-card.open .pack-toggle-icon { transform:rotate(180deg); }
+    .pack-progress-bar-wrap { height:4px; background:rgba(255,255,255,.15); }
+    .pack-progress-bar { height:100%; background:#34d399; transition:width .4s ease; width:0%; }
+    .pack-body { display:none; padding:12px 16px 16px; }
+    .pack-card.open .pack-body { display:block; }
+    .pack-category { margin-bottom:14px; }
+    .pack-cat-title { font-size:12px; font-weight:700; color:#64748b; letter-spacing:.5px; margin-bottom:8px; }
+    .pack-items { display:flex; flex-direction:column; gap:2px; }
+    .pack-item {
+      display:flex; align-items:center; gap:10px;
+      padding:8px 10px; border-radius:10px; cursor:pointer;
+      transition:background .15s; -webkit-tap-highlight-color:transparent;
+    }
+    .pack-item:active { background:#f1f5f9; }
+    .pack-item.checked { background:#f0fdf4; }
+    .pack-check-circle {
+      width:22px; height:22px; border-radius:999px; flex-shrink:0;
+      border:2px solid #cbd5e1; display:flex; align-items:center;
+      justify-content:center; transition:all .2s ease; background:white;
+    }
+    .pack-item.checked .pack-check-circle { background:#10b981; border-color:#10b981; }
+    .pack-check-circle::after { content:''; display:none; }
+    .pack-item.checked .pack-check-circle::after {
+      content:'✓'; display:block; color:white; font-size:13px; font-weight:700; line-height:1;
+    }
+    .pack-item-label { font-size:14px; color:#1e293b; transition:all .2s; }
+    .pack-item.checked .pack-item-label { text-decoration:line-through; color:#94a3b8; }
+    .pack-reset { display:block; width:100%; margin-top:8px; background:none; border:1px solid #e2e8f0; border-radius:10px; padding:8px; font-size:12px; color:#94a3b8; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+
+    /* ══ 일정 체크 ══ */
+    .tl-check-btn {
+      margin-left:auto; flex-shrink:0; width:28px; height:28px;
+      border-radius:999px; border:2px solid #cbd5e1; background:white;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; font-size:13px; color:transparent;
+      transition:all .2s ease; align-self:flex-start; margin-top:8px;
+      font-family:'Noto Sans KR',sans-serif;
+    }
+    .tl-item.done .tl-check-btn { background:#10b981; border-color:#10b981; color:white; }
+    .tl-item.done .tl-title { text-decoration:line-through; opacity:.45; }
+    .tl-item.done .tl-sub   { opacity:.35; }
+    .tl-item.done .tl-icon  { opacity:.4; filter:grayscale(.6); }
+    .tl-item.done .price-section,
+    .tl-item.done .opts,
+    .tl-item.done .map-row  { opacity:.3; pointer-events:none; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: linear-gradient(135deg, #7c2d12, #991b1b, #b45309);
+      padding: 24px 16px;
+      text-align: center;
+      color: #fef3c7;
+    }
+
+    .footer .big {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .footer p {
+      font-size: 14px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+
+    .footer .hearts {
+      font-size: 20px;
+      margin-top: 10px;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── 오프닝 모달 ── -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box" id="modalBox">
+
+      <!-- 상단 골드 배너 (고정) -->
+      <div class="modal-top-banner">
+        <span class="modal-banner-emoji">🌸 🎊 🌸</span>
+        <div class="modal-banner-text">부모님 환갑 기념 제주 가족 여행</div>
+      </div>
+
+      <!-- 스크롤 영역 -->
+      <div class="modal-scroll">
+        <!-- 사진 -->
+        <div class="modal-photo-wrap">
+          <img class="modal-photo" src="부모님과 준후.jpg" alt="부모님과 준후" />
+          <div class="photo-badge">🎂 환갑 축하</div>
+        </div>
+
+        <!-- 본문 -->
+        <div class="modal-body">
+          <div class="modal-names">
+            <span class="modal-name-tag">👨 아버지</span>
+            <span class="modal-name-tag">👩 어머니</span>
+            <span class="modal-name-tag">👶 준후</span>
+          </div>
+          <div class="modal-message">
+            사랑하는 부모님,<br>환갑을 진심으로 축하드려요 🎉
+          </div>
+          <div class="modal-divider"><span>🍊 🌺 🍊</span></div>
+          <div class="modal-sub">
+            온 가족이 함께하는 첫 제주도 여행<br>
+            소중한 추억 가득 만들어요 ❤️
+          </div>
+        </div>
+      </div>
+
+      <!-- 버튼 (고정) -->
+      <button class="modal-close-btn" onclick="closeModal()">✈️ 여행 일정 보러가기</button>
+      <div class="modal-skip">
+        <button onclick="closeModal()">닫기</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 다시보기 FAB -->
+  <button class="fab-photo" id="fabBtn" onclick="openModal()" style="display:none;">
+    📸 사진 다시보기
+  </button>
+
+  <script>
+    function closeModal() {
+      const overlay = document.getElementById('modal');
+      const box = document.getElementById('modalBox');
+      overlay.classList.add('hiding');
+      box.classList.add('hiding');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        document.getElementById('fabBtn').style.display = 'flex';
+      }, 290);
+    }
+
+    function openModal() {
+      const overlay = document.getElementById('modal');
+      const box = document.getElementById('modalBox');
+      overlay.classList.remove('hiding');
+      box.classList.remove('hiding');
+      overlay.style.display = 'flex';
+      document.getElementById('fabBtn').style.display = 'none';
+      // 재진입 시 애니메이션 재생
+      void box.offsetWidth;
+      box.style.animation = 'none';
+      requestAnimationFrame(() => {
+        box.style.animation = '';
+      });
+    }
+
+    // 배경 클릭 시 닫기
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+
+  <!-- 환갑 배너 -->
+  <div class="hwan-banner">
+    <div class="hwan-emoji-row">🎊 🌺 🎊</div>
+    <div class="hwan-title">부모님 환갑을 축하드립니다</div>
+    <div class="hwan-sub">가족 모두가 함께하는 특별한 제주 여행</div>
+    <div class="hwan-parents">
+      <span class="hwan-parent-tag">🎂 어머니 환갑 기념</span>
+      <span class="hwan-parent-tag">🥂 아버지 환갑 기념</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-plane">✈️</span>
+    <h1>26년 4월 제주도 가족 여행</h1>
+    <div class="dates">2026년 4월 3일 (금) — 4월 5일 (일) &nbsp;·&nbsp; 2박 3일</div>
+    <div class="family-row">
+      <span class="family-chip">👨‍👩 아버지 · 어머니</span>
+      <span class="family-chip">👩‍❤️‍👨 누나 · 매형</span>
+      <span class="family-chip">🧒👶 도은 · 준후</span>
+      <span class="family-chip">🙋 나</span>
+    </div>
+  </div>
+
+  <!-- BUDGET SUMMARY -->
+  <div class="budget-wrap">
+    <div class="budget-card">
+      <div class="budget-title">💰 여행 예산 요약 (7명 기준)</div>
+      <div class="budget-grid">
+        <div class="budget-item">
+          <div class="b-label">입장료 합계</div>
+          <div class="b-val">약 33만원</div>
+          <div class="b-sub">4개 유료 시설</div>
+        </div>
+        <div class="budget-item">
+          <div class="b-label">식비 예상</div>
+          <div class="b-val">약 50만원~</div>
+          <div class="b-sub">6끼 기준</div>
+        </div>
+        <div class="budget-item">
+          <div class="b-label">무료 입장</div>
+          <div class="b-val">3곳 무료</div>
+          <div class="b-sub">목장 · 박물관 · 지브리샵</div>
+        </div>
+        <div class="budget-item" style="background:linear-gradient(135deg,rgba(251,191,36,0.18),rgba(251,191,36,0.08));border:1px solid rgba(251,191,36,0.25);">
+          <div class="b-label">출발까지</div>
+          <div class="b-val" id="ddayVal" style="color:#fbbf24;">계산 중</div>
+          <div class="b-sub" id="ddaySub">2026.04.03 출발</div>
+        </div>
+      </div>
+      <div class="budget-total">
+        <span class="bt-label">전체 예상 (입장+식비)</span>
+        <span class="bt-val">약 80~100만원</span>
+      </div>
+      <div class="budget-note">※ 숙박비 · 렌트카 · 항공료 별도 / 할인권 사용 시 절감 가능</div>
+    </div>
+  </div>
+
+  <!-- FLIGHT -->
+  <div class="flight-wrap">
+    <div class="flight-card">
+      <div class="flight-label">✈ 항공편 정보</div>
+      <div class="flight-row">
+        <div class="flight-city">
+          <div class="city">대구</div>
+          <div class="iata">TAE</div>
+        </div>
+        <div class="flight-mid">
+          <div class="flight-times"><span>08:45</span><span>09:55</span></div>
+          <div class="flight-line"></div>
+          <div class="flight-dur">1시간 10분</div>
+        </div>
+        <div class="flight-city">
+          <div class="city">제주</div>
+          <div class="iata">CJU</div>
+        </div>
+      </div>
+      <div class="flight-badges">
+        <div class="fbadge">항공사 <b>티웨이항공</b></div>
+        <div class="fbadge">편명 <b>TW805</b></div>
+        <div class="fbadge">예약번호 <b>F34JUH</b></div>
+        <div class="fbadge">날짜 <b>4월 3일 (금)</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 날씨 + 짐 체크리스트 -->
+  <div class="extra-wrap">
+
+    <!-- 날씨 카드 -->
+    <div class="weather-card">
+      <div class="weather-title">🌤 제주 여행 기간 날씨 예보</div>
+      <div id="weatherContent"><div class="weather-loading">날씨 불러오는 중...</div></div>
+    </div>
+
+    <!-- 짐 체크리스트 -->
+    <div class="pack-card" id="packCard">
+      <div class="pack-header" onclick="togglePack()">
+        <div class="pack-header-left">
+          <span style="font-size:20px">🧳</span>
+          <div>
+            <h3>짐 챙기기 체크리스트</h3>
+            <div class="pack-progress-text" id="packProgressText">0 / 0 완료</div>
+          </div>
+        </div>
+        <span class="pack-toggle-icon" id="packToggleIcon">▼</span>
+      </div>
+      <div class="pack-progress-bar-wrap"><div class="pack-progress-bar" id="packProgressBar"></div></div>
+      <div class="pack-body" id="packBody">
+
+        <div class="pack-category">
+          <div class="pack-cat-title">📄 필수 서류</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">신분증 (전원)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">항공권 예약번호 (F34JUH)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">숙소 예약 확인서</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">렌트카 예약 확인서</span></div>
+          </div>
+        </div>
+
+        <div class="pack-category">
+          <div class="pack-cat-title">🧥 의류</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">겉옷 / 점퍼 (4월 제주 쌀쌀)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">여벌 옷 (2박 분)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">잠옷</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">편한 운동화</span></div>
+          </div>
+        </div>
+
+        <div class="pack-category">
+          <div class="pack-cat-title">🧴 세면 / 위생</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">칫솔 · 치약</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">샴푸 · 바디워시</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">선크림 (해수욕장 대비)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">마스크</span></div>
+          </div>
+        </div>
+
+        <div class="pack-category">
+          <div class="pack-cat-title">👶 준후 용품</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">기저귀 (넉넉하게)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">이유식 · 간식</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">아기 옷 여벌</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">물티슈 · 아기 비누</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">체온계 · 아기 약</span></div>
+          </div>
+        </div>
+
+        <div class="pack-category">
+          <div class="pack-cat-title">💊 상비약</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">소화제</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">두통약 · 해열제</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">지사제</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">밴드 · 연고</span></div>
+          </div>
+        </div>
+
+        <div class="pack-category" style="margin-bottom:4px">
+          <div class="pack-cat-title">📱 전자기기</div>
+          <div class="pack-items">
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">스마트폰 충전기 (전원)</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">보조 배터리</span></div>
+            <div class="pack-item" onclick="togglePackItem(this)"><div class="pack-check-circle"></div><span class="pack-item-label">카메라 · 메모리카드</span></div>
+          </div>
+        </div>
+
+        <button class="pack-reset" onclick="resetPack()">↺ 체크리스트 초기화</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAY CARDS -->
+  <div class="days-wrap">
+
+    <!-- ────────── DAY 1 ────────── -->
+    <div class="day-card">
+      <div class="day-header d1">
+        <div class="day-num"><span class="n">1</span><span class="lbl">DAY</span></div>
+        <div class="day-info">
+          <h2>첫째 날 — 도착 &amp; 동쪽 탐방</h2>
+          <div class="ddate">2026년 4월 3일 금요일</div>
+        </div>
+        <div class="day-cost">예상 ~20만원</div>
+      </div>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-icon ic-plane">✈️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              제주 공항 도착
+              <a class="map-link" href="https://map.naver.com/v5/search/제주국제공항" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">TW805 · 09:55 도착</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-car">🚗</div>
+          <div class="tl-body">
+            <div class="tl-title">렌트카 인도</div>
+            <div class="tl-sub">공항 근처 렌트카 수령 후 출발</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-food">🍜</div>
+          <div class="tl-body">
+            <div class="tl-title">점심 식사</div>
+            <div class="tl-sub">아래 중에서 선택</div>
+            <div class="opts">
+              <span class="opt food"><a href="https://map.naver.com/v5/search/면주막+제주" target="_blank">📍 면주막 — 고기국수 ·
+                  고기국밥</a></span>
+              <span class="opt food"><a href="https://map.naver.com/v5/search/와흘길따라" target="_blank">📍 와흘길따라 —
+                  버섯전골</a></span>
+              <span class="opt food"><a href="https://map.naver.com/v5/search/와흘밥상" target="_blank">📍 와흘밥상 —
+                  전복해물뚝배기</a></span>
+            </div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 예상 식비</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">1인 약 10,000~15,000원</span>
+                <span class="price-chip pc-total">7명 합계 약 7~11만원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-nature">🌿</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              에코랜드
+              <a class="map-link" href="https://map.naver.com/v5/search/에코랜드테마파크" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">제주 곶자왈 테마파크 — 기차 타고 숲 속 탐방 🚂</div>
+            <div class="price-section paid-section">
+              <div class="price-label">🎟 입장료</div>
+              <div class="price-row">
+                <span class="price-chip pc-adult">성인 16,000원</span>
+                <span class="price-chip pc-senior">경로(65세↑) 14,000원</span>
+                <span class="price-chip pc-child">어린이 11,000원</span>
+                <span class="price-chip pc-free">36개월↓ 무료</span>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <span class="price-chip pc-total">7명 합계 약 97,000~102,000원</span>
+              </div>
+              <div class="price-note">※ 성인 5명 + 어린이 2명 기준 / 아버지 연령에 따라 경로 할인 가능</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-shop">🎋</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              도토리 숲
+              <a class="map-link" href="https://map.naver.com/v5/search/도토리숲+제주+지브리" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">지브리 소품샵 🌟 — 제주 구좌읍 송당 동화마을 내</div>
+            <div class="price-section free-section">
+              <div class="price-row">
+                <span class="price-chip pc-free">✅ 입장 무료 (소품 구매 비용 별도)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-hotel">🏠</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              숙소 체크인
+              <a class="map-link" href="https://map.naver.com/v5/search/표선바당스테이" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">표선바당스테이</div>
+            <div class="map-row">
+              <a class="map-btn" href="https://map.naver.com/v5/search/메가맥카페+표선" target="_blank">☕ 메가맥카페 테이크아웃</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-museum">🏘️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              제주 민속촌
+              <a class="map-link" href="https://map.naver.com/v5/search/제주민속촌" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">제주 전통 생활 문화 체험</div>
+            <div class="price-section paid-section">
+              <div class="price-label">🎟 입장료</div>
+              <div class="price-row">
+                <span class="price-chip pc-adult">성인 15,000원</span>
+                <span class="price-chip pc-senior">경로(65세↑) 13,000원</span>
+                <span class="price-chip pc-child">어린이(만4세↑) 11,000원</span>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <span class="price-chip pc-total">7명 합계 약 93,000~97,000원</span>
+              </div>
+              <div class="price-note">※ 네이버 예약 시 10% 할인 / 제주도민 30% 할인</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-shop">🛒</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              장보기
+              <a class="map-link" href="https://map.naver.com/v5/search/표선농협하나로마트" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">표선농협하나로마트 — 숙소 저녁용 식재료</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-food">🐷</div>
+          <div class="tl-body">
+            <div class="tl-title">저녁 식사 — 흑돼지</div>
+            <div class="opts"><span class="opt tbd">식당 미정</span></div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 예상 식비</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">1인 약 20,000~25,000원</span>
+                <span class="price-chip pc-total">7명 합계 약 14~18만원</span>
+              </div>
+              <div class="price-note">※ 흑돼지 특성상 1인분당 가격이 높을 수 있음</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ────────── DAY 2 ────────── -->
+    <div class="day-card">
+      <div class="day-header d2">
+        <div class="day-num"><span class="n">2</span><span class="lbl">DAY</span></div>
+        <div class="day-info">
+          <h2>둘째 날 — 서쪽으로 이동</h2>
+          <div class="ddate">2026년 4월 4일 토요일</div>
+        </div>
+        <div class="day-cost">예상 ~17만원</div>
+      </div>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-icon ic-morn">🍜</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              아침 식사
+              <a class="map-link" href="https://map.naver.com/v5/search/당케올레국수" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">당케올레국수 · 식사 후 숙소 근처 산책 🚶</div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 메뉴 가격</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">보말칼국수 10,000원</span>
+                <span class="price-chip pc-per">고기국수 7,000원</span>
+                <span class="price-chip pc-per">성게칼국수 12,000원</span>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <span class="price-chip pc-total">7명 합계 약 7~8만원 예상</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-cow">🐄</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              아침 미소 목장
+              <a class="map-link" href="https://map.naver.com/v5/search/아침미소목장" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">체크아웃 후 방문 · 목장 내 카페 운영 ☕</div>
+            <div class="price-section free-section">
+              <div class="price-row">
+                <span class="price-chip pc-free">✅ 입장 무료</span>
+                <span class="price-chip pc-per">음료·체험 별도</span>
+              </div>
+              <div class="price-note">※ 화요일 · 명절 휴무 / 10:00~17:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-food">🍱</div>
+          <div class="tl-body">
+            <div class="tl-title">점심 식사</div>
+            <div class="tl-sub">아래 중에서 선택</div>
+            <div class="opts">
+              <span class="opt food"><a href="https://map.naver.com/v5/search/밥먹자+제주" target="_blank">📍 밥먹자 — 고사리 육개장 ·
+                  몸국 · 고등어</a></span>
+              <span class="opt food"><a href="https://map.naver.com/v5/search/녹색식당+제주" target="_blank">📍 녹색식당 —
+                  정식</a></span>
+              <span class="opt food"><a href="https://map.naver.com/v5/search/녹차골식당+제주" target="_blank">📍 녹차골식당 —
+                  정식</a></span>
+            </div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 예상 식비</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">1인 약 10,000~15,000원</span>
+                <span class="price-chip pc-total">7명 합계 약 7~11만원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-museum">🏛️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              그리스 신화 박물관
+              <a class="map-link" href="https://map.naver.com/v5/search/그리스신화박물관+제주" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">신화 속 세계를 테마로 한 전시관 🗿</div>
+            <div class="price-section paid-section">
+              <div class="price-label">🎟 입장료</div>
+              <div class="price-row">
+                <span class="price-chip pc-adult">성인 9,000원</span>
+                <span class="price-chip pc-senior">경로·유공자 7,000원</span>
+                <span class="price-chip pc-child">소인·청소년 8,000원</span>
+                <span class="price-chip pc-free">36개월↓ 무료</span>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <span class="price-chip pc-total">7명 합계 약 57,000~61,000원</span>
+              </div>
+              <div class="price-note">※ 09:00~18:00 (입장마감 17:00) / 매월 마지막 월요일 휴관</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-shop">🛍️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              장보기
+              <a class="map-link" href="https://map.naver.com/v5/search/제주한림농협하나로마트" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">제주한림농협하나로마트 · 포장 음식 픽업</div>
+            <div class="opts">
+              <span class="opt food"><a href="https://map.naver.com/v5/search/채훈이네해장국" target="_blank">📍 채훈이네 해장국 — 고사리
+                  육개장 · 선지 해장국</a></span>
+              <span class="opt food"><a href="https://map.naver.com/v5/search/웅담+제주" target="_blank">📍 웅담 — 보말 미역국 ·
+                  두루치기</a></span>
+            </div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 예상 포장 비용</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">1인분 약 9,000~12,000원</span>
+                <span class="price-chip pc-total">7명 합계 약 6~9만원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-beach">🌊</div>
+          <div class="tl-body">
+            <div class="tl-title">해수욕장 구경</div>
+            <div class="map-row">
+              <a class="map-btn" href="https://map.naver.com/v5/search/금능해수욕장" target="_blank">📍 금능 해수욕장</a>
+              <a class="map-btn" href="https://map.naver.com/v5/search/협재해수욕장" target="_blank">📍 협재 해수욕장</a>
+            </div>
+            <div class="price-section free-section">
+              <div class="price-row">
+                <span class="price-chip pc-free">✅ 무료</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-hotel">🏡</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              숙소 체크인
+              <a class="map-link" href="https://map.naver.com/v5/search/르빌리지애월" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">르빌리지 애월 1호점 D동</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-market">🌙</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              야시장 (시간되면)
+              <a class="map-link" href="https://map.naver.com/v5/search/수목원길야시장" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">수목원길 야시장</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-food">🥘</div>
+          <div class="tl-body">
+            <div class="tl-title">저녁 식사</div>
+            <div class="tl-sub">숙소에서 포장해 온 음식으로 🍱</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ────────── DAY 3 ────────── -->
+    <div class="day-card">
+      <div class="day-header d3">
+        <div class="day-num"><span class="n">3</span><span class="lbl">DAY</span></div>
+        <div class="day-info">
+          <h2>셋째 날 — 박물관 &amp; 귀가</h2>
+          <div class="ddate">2026년 4월 5일 일요일</div>
+        </div>
+        <div class="day-cost">예상 ~10만원</div>
+      </div>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-icon ic-morn">🍜</div>
+          <div class="tl-body">
+            <div class="tl-title">아침 식사</div>
+            <div class="opts"><span class="opt food">라면 또는 컵밥</span></div>
+            <div class="price-section food-section">
+              <div class="price-row">
+                <span class="price-chip pc-free">✅ 숙소 취사 (저렴)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-museum">🎨</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              제주 홀릭 뮤지엄
+              <a class="map-link" href="https://map.naver.com/v5/search/제주홀릭뮤지엄" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">체크아웃 후 방문 · 인터랙티브 아트 전시관</div>
+            <div class="price-section paid-section">
+              <div class="price-label">🎟 입장료</div>
+              <div class="price-row">
+                <span class="price-chip pc-adult">성인 11,000원</span>
+                <span class="price-chip pc-senior">청소년 10,000원</span>
+                <span class="price-chip pc-child">소인(24개월↑) 8,000원</span>
+                <span class="price-chip pc-free">24개월↓ 무료</span>
+              </div>
+              <div class="price-divider"></div>
+              <div class="price-row">
+                <span class="price-chip pc-total">7명 합계 약 67,000~71,000원</span>
+              </div>
+              <div class="price-note">※ 온라인 예매 시 할인 / 09:30~18:00 연중무휴</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-beach">🏖️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              이호테우 해수욕장 (선택)
+              <a class="map-link" href="https://map.naver.com/v5/search/이호테우해수욕장" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">어제 해수욕장 못 갔을 경우</div>
+            <div class="price-section free-section">
+              <div class="price-row"><span class="price-chip pc-free">✅ 무료</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-food">🍽️</div>
+          <div class="tl-body">
+            <div class="tl-title">점심 식사</div>
+            <div class="opts"><span class="opt tbd">미정</span></div>
+            <div class="price-section food-section">
+              <div class="price-label">💰 예상 식비</div>
+              <div class="price-row">
+                <span class="price-chip pc-per">1인 약 10,000~15,000원</span>
+                <span class="price-chip pc-total">7명 합계 약 7~11만원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-museum">🏛️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              국립 제주 박물관
+              <a class="map-link" href="https://map.naver.com/v5/search/국립제주박물관" target="_blank">📍 지도</a>
+            </div>
+            <div class="tl-sub">제주 역사 · 문화 유물 전시</div>
+            <div class="price-section free-section">
+              <div class="price-row">
+                <span class="price-chip pc-free">✅ 상설전시 무료</span>
+                <span class="price-chip pc-per">기획전시 별도</span>
+              </div>
+              <div class="price-note">※ 월요일 · 신정 휴관 / 09:00~18:00 (토·공휴일 19:00)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-cafe">☕</div>
+          <div class="tl-body">
+            <div class="tl-title">카페</div>
+            <div class="tl-sub">여행 마지막 커피 한 잔 ☕</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-car">🚗</div>
+          <div class="tl-body">
+            <div class="tl-title">렌트카 반납</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-icon ic-plane">✈️</div>
+          <div class="tl-body">
+            <div class="tl-title">
+              제주 공항 — 귀가
+              <a class="map-link" href="https://map.naver.com/v5/search/제주국제공항" target="_blank">📍 지도</a>
+            </div>
+            <div class="opts"><span class="opt tbd">귀국 편 확인 필요</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="big">🍊 제주도에서 만드는 특별한 추억</div>
+    <p>어머니, 아버지 환갑을 축하드리며<br>온 가족이 함께하는 소중한 시간이 되길 바랍니다</p>
+    <div class="hearts">❤️ 🧡 💛 💚 💙 💜 🤍</div>
+    <p style="margin-top:10px; font-size:12px; opacity:0.6;">나 · 아버지 · 어머니 · 누나 · 매형 · 도은 · 준후</p>
+  </div>
+
+
+<script>
+/* ════ D-Day 카운터 ════ */
+(function () {
+  function updateDday() {
+    var now    = new Date();
+    var target = new Date('2026-04-03T08:45:00+09:00');
+    var diff   = target - now;
+    var valEl  = document.getElementById('ddayVal');
+    var subEl  = document.getElementById('ddaySub');
+    if (!valEl) return;
+
+    if (diff <= 0) {
+      var elapsed = Math.abs(diff);
+      var days  = Math.floor(elapsed / 86400000);
+      if (days === 0) {
+        valEl.textContent = '✈️ 출발!';
+        subEl.textContent = '오늘이 바로 그 날! 🎉';
+      } else if (days <= 2) {
+        valEl.textContent = '여행 중 🌴';
+        subEl.textContent = days + '일차 즐기는 중!';
+      } else {
+        valEl.textContent = '여행 완료 🍊';
+        subEl.textContent = '소중한 추억 +' + days + '일';
+      }
+    } else {
+      var totalSec = Math.floor(diff / 1000);
+      var d = Math.floor(totalSec / 86400);
+      var h = Math.floor((totalSec % 86400) / 3600);
+      var m = Math.floor((totalSec % 3600) / 60);
+      var s = totalSec % 60;
+      if (d > 0) {
+        valEl.textContent = 'D - ' + d;
+        subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
+      } else {
+        valEl.textContent = 'D - 0';
+        subEl.textContent = h + '시간 ' + m + '분 ' + s + '초 남음';
+      }
+    }
+  }
+  updateDday();
+  setInterval(updateDday, 1000);
+})();
+
+/* ════ 날씨 카드 (Open-Meteo) ════ */
+(function () {
+  var WMO  = {0:'맑음',1:'구름 조금',2:'구름 많음',3:'흐림',45:'안개',48:'안개',51:'이슬비',53:'이슬비',55:'이슬비',61:'비',63:'비',65:'강한 비',71:'눈',73:'눈',75:'강한 눈',80:'소나기',81:'소나기',82:'강한 소나기',95:'뇌우',99:'뇌우'};
+  var ICON = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈',99:'⛈'};
+  var DATES = ['4/3 (금)','4/4 (토)','4/5 (일)'];
+
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=33.4996&longitude=126.5312&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=2026-04-03&end_date=2026-04-05')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      var d = data.daily, html = '<div class="weather-days">';
+      for (var i = 0; i < 3; i++) {
+        var code = d.weathercode[i];
+        html += '<div class="weather-day">'
+          + '<div class="wd-date">' + DATES[i] + '</div>'
+          + '<div class="wd-icon">'  + (ICON[code] || '🌤') + '</div>'
+          + '<div class="wd-desc">'  + (WMO[code]  || '맑음') + '</div>'
+          + '<div class="wd-temp">'  + Math.round(d.temperature_2m_max[i]) + '° <span class="mn">/ ' + Math.round(d.temperature_2m_min[i]) + '°</span></div>'
+          + '<div class="wd-rain">💧 ' + d.precipitation_probability_max[i] + '%</div>'
+          + '</div>';
+      }
+      document.getElementById('weatherContent').innerHTML = html + '</div>';
+    })
+    .catch(function() {
+      document.getElementById('weatherContent').innerHTML =
+        '<div class="weather-error">날씨 정보를 불러올 수 없습니다<br>여행 전 날씨앱을 확인해 주세요 🌤</div>';
+    });
+})();
+
+/* ════ 짐 체크리스트 ════ */
+function togglePack() {
+  var card = document.getElementById('packCard');
+  card.classList.toggle('open');
+}
+
+function togglePackItem(el) {
+  el.classList.toggle('checked');
+  updatePackProgress();
+  savePackState();
+}
+
+function updatePackProgress() {
+  var all     = document.querySelectorAll('.pack-item');
+  var checked = document.querySelectorAll('.pack-item.checked');
+  var pct = all.length ? (checked.length / all.length * 100) : 0;
+  document.getElementById('packProgressBar').style.width = pct + '%';
+  document.getElementById('packProgressBar').style.background = (pct === 100) ? '#f59e0b' : '#34d399';
+  document.getElementById('packProgressText').textContent = checked.length + ' / ' + all.length + ' 완료';
+}
+
+function savePackState() {
+  var state = [];
+  document.querySelectorAll('.pack-item').forEach(function(el) { state.push(el.classList.contains('checked') ? 1 : 0); });
+  try { localStorage.setItem('jeju_pack', JSON.stringify(state)); } catch(e) {}
+}
+
+function resetPack() {
+  if (!confirm('체크리스트를 초기화할까요?')) return;
+  document.querySelectorAll('.pack-item').forEach(function(el) { el.classList.remove('checked'); });
+  updatePackProgress();
+  try { localStorage.removeItem('jeju_pack'); } catch(e) {}
+}
+
+/* 짐 상태 복원 */
+(function() {
+  try {
+    var saved = JSON.parse(localStorage.getItem('jeju_pack') || 'null');
+    if (saved) {
+      var items = document.querySelectorAll('.pack-item');
+      saved.forEach(function(v, i) { if (v && items[i]) items[i].classList.add('checked'); });
+    }
+  } catch(e) {}
+  updatePackProgress();
+})();
+
+/* ════ 일정 체크리스트 ════ */
+(function() {
+  var items = document.querySelectorAll('.tl-item');
+
+  /* 체크 버튼 삽입 */
+  items.forEach(function(item, idx) {
+    var btn = document.createElement('button');
+    btn.className = 'tl-check-btn';
+    btn.textContent = '✓';
+    item.appendChild(btn);
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      item.classList.toggle('done');
+      saveTlState();
+    });
+  });
+
+  function saveTlState() {
+    var state = [];
+    document.querySelectorAll('.tl-item').forEach(function(el) { state.push(el.classList.contains('done') ? 1 : 0); });
+    try { localStorage.setItem('jeju_tl', JSON.stringify(state)); } catch(e) {}
+  }
+
+  /* 일정 상태 복원 */
+  try {
+    var saved = JSON.parse(localStorage.getItem('jeju_tl') || 'null');
+    if (saved) {
+      items.forEach(function(el, i) { if (saved[i]) el.classList.add('done'); });
+    }
+  } catch(e) {}
+})();
+</script>
+
+</body>
+
+</html>
