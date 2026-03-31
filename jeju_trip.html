@@ -1580,6 +1580,14 @@
     }
     .kako-btn:active { transform: scale(0.97); }
     .kako-note { font-size: 11px; color: #64748b; text-align: center; margin-top: 12px; line-height: 1.5; }
+    .kako-dismiss {
+      display: block; width: 100%; margin-top: 10px; padding: 10px;
+      background: transparent; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; color: #64748b; font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      text-align: center;
+    }
+    .kako-dismiss:active { opacity: 0.7; }
   </style>
 </head>
 
@@ -1622,6 +1630,8 @@
         </div>
         <p class="kako-note">Chrome에서 열면 홈 화면 추가(PWA)도 가능해요 ✨</p>
       </div>
+
+      <button class="kako-dismiss" onclick="document.getElementById('kakoOverlay').style.display='none'">그냥 여기서 볼게요</button>
     </div>
   </div>
 
@@ -2108,8 +2118,8 @@
             <div class="rain-alt">
               <div class="rain-alt-label">🌧 비 올 때 대안</div>
               <div class="opts">
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/넥슨컴퓨터박물관+제주" target="_blank">📍 넥슨컴퓨터박물관 — 실내 · 무료</a></span>
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/제주돌문화공원" target="_blank">📍 제주돌문화공원 — 실내 전시 포함</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/제주돌문화공원" target="_blank">📍 제주돌문화공원 — 에코랜드 바로 옆 · 실내 전시 포함</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/제주해녀박물관" target="_blank">📍 제주 해녀박물관 — 구좌읍 세화리 · 차로 약 20분 · 실내</a></span>
               </div>
             </div>
           </div>
@@ -2169,8 +2179,8 @@
             <div class="rain-alt">
               <div class="rain-alt-label">🌧 비 올 때 대안</div>
               <div class="opts">
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/아쿠아플라넷제주" target="_blank">📍 아쿠아플라넷 제주 — 실내 아쿠아리움 (성산)</a></span>
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/테지움제주" target="_blank">📍 테지움 제주 — 실내 테디베어 박물관</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/아쿠아플라넷제주" target="_blank">📍 아쿠아플라넷 제주 — 표선에서 차로 약 20분 · 실내 아쿠아리움</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/유리의성+제주" target="_blank">📍 유리의 성 — 성산읍 고성리 · 차로 약 20분 · 실내 유리 예술</a></span>
               </div>
             </div>
           </div>
@@ -2351,8 +2361,8 @@
             <div class="rain-alt">
               <div class="rain-alt-label">🌧 비 올 때 대안</div>
               <div class="opts">
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/오설록티뮤지엄" target="_blank">📍 오설록 티뮤지엄 — 실내 · 무료 입장</a></span>
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/한림공원" target="_blank">📍 한림공원 — 용암동굴 실내 관람</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/한림공원" target="_blank">📍 한림공원 — 협재에서 차로 5분 · 용암동굴 실내 관람</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/제주항공우주박물관" target="_blank">📍 제주항공우주박물관 — 안덕면 · 차로 약 25분 · 실내 체험형</a></span>
               </div>
             </div>
           </div>
@@ -2380,7 +2390,7 @@
             <div class="rain-alt">
               <div class="rain-alt-label">🌧 비 올 때 대안</div>
               <div class="opts">
-                <span class="opt rain"><a href="https://map.naver.com/v5/search/동문재래시장+제주" target="_blank">📍 동문재래시장 — 실내 아케이드</a></span>
+                <span class="opt rain"><a href="https://map.naver.com/v5/search/넥슨컴퓨터박물관+제주" target="_blank">📍 넥슨컴퓨터박물관 — 노형동 · 수목원길에서 차로 약 10분 · 무료</a></span>
               </div>
             </div>
           </div>
